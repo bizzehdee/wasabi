@@ -1,0 +1,16 @@
+<xhd>
+  <class name="XUIOSWindow"
+         implementation="XUIOSWindow"
+         class_header="..\xuioswindow.h"
+         class_module="..\xuioswindow.cpp"
+         xhd_factories="SourceSink;JSScriptable"
+         SourceSink_h="../sourcesink/XUIOSWindowEventSource.h"
+         SourceSink_cpp="../sourcesink/XUIOSWindowEventSource.cpp"
+         JSScriptable_h="../js/JSXUIOSWindow.h"
+         JSScriptable_cpp="../js/JSXUIOSWindow.cpp"
+         SourceSink_h2="../sourcesink/XUIOSWindowEventSink.h"
+         guid_jsScriptable="{6D18D2A8-D414-4163-AD15-BCCC5E65A3B6}">
+    <method name="onUserClose" type="void" line="15" scriptable="1" isevent="1">
+    </method>
+  </class>
+</xhd>

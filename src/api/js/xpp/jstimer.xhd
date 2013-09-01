@@ -1,0 +1,34 @@
+<xhd>
+  <class name="JSTimer"
+         implementation="JSTimer"
+         class_header="../jstimer.h"
+         class_module="../jstimer.cpp"
+         xhd_factories="SourceSink;JSScriptable"
+         SourceSink_h="../sourcesink/JSTimerEventSource.h"
+         SourceSink_cpp="../sourcesink/JSTimerEventSource.cpp"
+         SourceSink_h2="../sourcesink/JSTimerEventSink.h"
+         JSScriptable_h="../js/JSJSTimer.h"
+         JSScriptable_cpp="../js/JSJSTimer.cpp"
+         guid_jsScriptable="{F2005A45-61DD-4594-9DC1-2D5EEB7C58D8}">
+    <method name="JSTimer" line="15">
+    </method>
+    <method name="~JSTimer" line="16" virtual="1">
+    </method>
+    <method name="timerclient_timerCallback" type="void" line="18" virtual="1">
+      <param name="id" type="int"/>
+    </method>
+    <method name="setDelay" type="void" scriptable="1" line="4">
+      <param name="delay" type="int"/>
+    </method>
+    <method name="start" type="void" scriptable="1" line="9">
+    </method>
+    <method name="stop" type="void" scriptable="1" line="14">
+    </method>
+    <method name="onTimer" type="void" scriptable="1" isevent="1" line="19">
+    </method>
+    <data  name="m_delay" type="int" line="26" scope="private">
+    </data>
+    <data  name="m_set" type="int" line="27" scope="private">
+    </data>
+  </class>
+</xhd>

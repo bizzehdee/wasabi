@@ -1,0 +1,215 @@
+<!-- *********************************************************************************** -->
+<!--                                                                                     -->
+<!--                       std.xph : standard procedure definitions                      -->
+<!--                                                                                     -->
+<!-- *********************************************************************************** -->
+
+
+<include file="translation.xph"/>
+
+<!-- *********************************************************************************** -->
+<!--                                                                                     -->
+<!-- std_class_methodcallback                                                            -->
+<!--                                                                                     -->
+<!-- context: class                                                                      -->
+<!--                                                                                     -->
+<!-- purpose:                                                                            -->
+<!--                                                                                     -->
+<!--  executes a callback for each method matching the requested types                   -->
+<!--                                                                                     -->
+<!-- params :                                                                            -->
+<!--                                                                                     -->
+<!--  proc           : procedure to call back with the method context (mandatory)        -->
+<!--  type           : type(s) to enumerate (or'ed, mandatory)                           -->
+<!--  typeand        : use and for type (default:0, use or)                              -->
+<!--  excludetype    : type(s) to exclude (or'ed, optional)                              -->
+<!--  excludetypeand : use and for excludetype (default:0, use or)                       -->
+<!--                                                                                     -->
+<!-- *********************************************************************************** -->
+
+<proc id="std_class_methodcallback">  
+
+ <set id="type_op"><if text="$typeand" match="1">and<else>or</else></if></set>
+ <set id="extype_op"><if text="$excludetypeand" match="1">and<else>or</else></if></set>
+ 
+ <foreach objects="methods">
+  <if object="method" isoftype="$type" op="$type_op">
+   <if text="$excludetype" match="" not="1" op="$extype_op">
+     <skip objects="methods" type="$excludetype"/>
+   </if>
+   <call id="$proc" />
+  </if>
+ </foreach>
+
+</proc>
+
+<!-- *********************************************************************************** -->
+<!--                                                                                     -->
+<!-- std_method_paramlist                                                                -->
+<!--                                                                                     -->
+<!-- context: method                                                                     -->
+<!--                                                                                     -->
+<!-- purpose:                                                                            -->
+<!--                                                                                     -->
+<!--  lists all the parameters in the current method context and separates them with     -->
+<!--  commas.                                                                            -->
+<!--                                                                                     -->
+<!-- params :                                                                            -->
+<!--                                                                                     -->
+<!--   inout           : 0 (default) or 1 to include in/out/inout keywords               -->
+<!--   return_as_param : "" (no return type as a param, default), "first", or "last"     -->
+<!--   types           : 0 (do not output parameter types), or 1 (default)               -->
+<!--                                                                                     -->
+<!-- *********************************************************************************** -->
+
+<proc id="std_method_paramlist">  
+
+ <if text="$types" match=""><set id="types" value="1"/></if>
+ <set id="return_first"><if text="$return_as_param" match="first">1<else>0</else></if></set>
+ <set id="return_last"><if text="$return_as_param" match="last">1<else>0</else></if></set>
+
+ <set id="retparam">
+  <if object="methods" isoftype="void" not="1">
+   <if bool="$inout">out%20</if>
+   <if bool="$types">
+    <method data="returntype"/>%20*
+   </if>
+   retVal
+  </if>
+ </set>
+
+ <if bool="$return_first">
+  <if object="methods" isoftype="void" not="1">
+   <get id="retparam"/>
+   <if text="$(method.numparams)" match="0" not="1">, </if>
+  </if>
+ </if>
+
+ <foreach objects="params">
+  <forcomma/>
+  <if bool="$inout"><param data="io"/></if>
+  <if bool="$types">
+   <param data="type"/>
+  </if>
+  <param data="name"/>
+ </foreach>
+
+ <if bool="$return_last">
+  <if object="methods" isoftype="void" not="1">
+   <if text="$(method.numparams)" match="0" not="1">, </if>
+   <get id="retparam"/>
+  </if>
+ </if>
+
+</proc>
+
+
+<!-- *********************************************************************************** -->
+<!--                                                                                     -->
+<!-- std_class_getnumevents                                                              -->
+<!--                                                                                     -->
+<!-- context: class                                                                      -->
+<!--                                                                                     -->
+<!-- purpose:                                                                            -->
+<!--                                                                                     -->
+<!--  counts the number of exposed events in the class                                   -->
+<!--                                                                                     -->
+<!-- params : none                                                                       -->
+<!--                                                                                     -->
+<!-- *********************************************************************************** -->
+
+<proc id="std_class_getnumevents">
+ <set id="eventcount" value="0"/>
+ <foreach objects="methods">
+  <skip objects="methods" type="private|protected|ctor|dtor|static"/>
+  <skip objects="methods" type="script" not="1"/>
+  <skip objects="methods" type="event" not="1"/>
+  <inc id="eventcount"/>
+ </foreach>
+ <get id="eventcount"/>
+</proc>
+
+
+
+
+<!-- *********************************************************************************** -->
+<!--                                                                                     -->
+<!-- std_mark_method                                                                     -->
+<!--                                                                                     -->
+<!-- context: method                                                                     -->
+<!--                                                                                     -->
+<!-- purpose:                                                                            -->
+<!--                                                                                     -->
+<!--  marks the current method                                                           -->
+<!--                                                                                     -->
+<!-- params : none                                                                       -->
+<!--                                                                                     -->
+<!-- *********************************************************************************** -->
+<proc id="std_mark_method">
+ <call id="std_markmethodid" var="fndesc"/>
+ <set id="$fndesc" value="1"/>
+</proc>
+
+
+<!-- *********************************************************************************** -->
+<!--                                                                                     -->
+<!-- std_is_method_marked                                                                -->
+<!--                                                                                     -->
+<!-- context: method                                                                     -->
+<!--                                                                                     -->
+<!-- purpose:                                                                            -->
+<!--                                                                                     -->
+<!--  returns 1 if the current method is marked, 0 otherwise                             -->
+<!--                                                                                     -->
+<!-- params :                                                                            -->
+<!--                                                                                     -->
+<!--  id : (optional) ignores method context and use this string to determine the        -->
+<!--       marked state                                                                  -->
+<!--                                                                                     -->
+<!-- *********************************************************************************** -->
+<proc id="std_is_method_marked">
+ <if text="$id" match="" not="1">
+  <set id="fndesc" value="$id"/>
+  <else><call id="std_markmethodid" var="fndesc"/></else>
+ </if>
+ <get id="$fndesc" value="1"/>
+</proc>
+
+
+<!-- *********************************************************************************** -->
+<!--                                                                                     -->
+<!-- std_reset_marked_methods                                                            -->
+<!--                                                                                     -->
+<!-- context: class                                                                      -->
+<!--                                                                                     -->
+<!-- purpose:                                                                            -->
+<!--                                                                                     -->
+<!--  clears up all the marks                                                            -->
+<!--                                                                                     -->
+<!-- params : none                                                                       -->
+<!--                                                                                     -->
+<!-- *********************************************************************************** -->
+<proc id="std_reset_marked_methods">
+ <foreach objects="methods">
+  <call id="std_markmethodid" var="fndesc"/>
+  <set id="$fndesc" value="0"/>
+ </foreach>
+</proc>
+
+<!-- *********************************************************************************** -->
+<proc id="std_markmethodid">
+  <set id="$var">
+  <method data="name" trim="1"/>
+  <foreach objects="param">
+   <param data="type" trim="1"/>_
+  </foreach>
+  </set>
+</proc>
+
+
+<proc id="codeblocks">
+  <foreach objects="codeblocks" type="$type">
+    <codeblock data="block"/>
+    <br/>
+  </foreach>
+</proc>

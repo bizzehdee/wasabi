@@ -1,0 +1,5 @@
+create new "windows application" project
+add this file
+add waContainer.cpp
+link wasabi
+compile

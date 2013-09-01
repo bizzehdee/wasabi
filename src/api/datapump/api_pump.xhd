@@ -1,0 +1,50 @@
+<xhd>
+  <class name="api_pump"
+         implementation="api_pumpI"
+         class_header="api_pumpi.h"
+         class_module="api_pumpi.cpp"
+         xhd_factories="Interface"
+         dispatchable="1"
+         dispatchable_header="api_pumpx.h"
+         dispatchable_module="api_pumpx.cpp"
+         interface_header="api_pump.h"
+         interface_module="api_pump.cpp">
+    <method name="api_pumpI" line="9" nodispatch="1">
+    </method>
+    <method name="~api_pumpI" line="10" virtual="1" nodispatch="1">
+    </method>
+    <method name="addPumpHandler" type="int" dispatch_id="100" line="12" dispatch="1">
+      <param name="handler" type="PumpHandler *"/>
+    </method>
+    <method name="getPumpHandler" type="PumpHandler *" dispatch_id="110" line="13" dispatch="1">
+      <param name="eclass" type="PumpClass"/>
+    </method>
+    <method name="registerSink" type="int" dispatch_id="200" line="15" dispatch="1">
+      <param name="eclass" type="PumpClass"/>
+      <param name="sink" type="DataSink *"/>
+    </method>
+    <method name="registerSource" type="int" dispatch_id="210" line="16" dispatch="1">
+      <param name="eclass" type="PumpClass"/>
+      <param name="source" type="DataSource *"/>
+    </method>
+    <method name="deregisterSink" type="int" dispatch_id="220" line="17" dispatch="1">
+      <param name="sink" type="DataSink *"/>
+    </method>
+    <method name="deregisterSource" type="int" dispatch_id="230" line="18" dispatch="1">
+      <param name="source" type="DataSource *"/>
+    </method>
+    <method name="pushData" type="int" dispatch_id="300" line="20" dispatch="1">
+      <param name="sink" type="GUID"/>
+      <param name="pusher" type="GUID"/>
+      <param name="data" type="void *"/>
+      <param name="sz" type="unsigned long"/>
+    </method>
+    <method name="pullData" type="int" dispatch_id="350" line="21" dispatch="1">
+      <param name="source" type="GUID"/>
+      <param name="puller" type="GUID"/>
+      <param name="data" type="void *"/>
+      <param name="sz" type="unsigned long"/>
+      <param name="actual_sz" type="unsigned long *"/>
+    </method>
+  </class>
+</xhd>

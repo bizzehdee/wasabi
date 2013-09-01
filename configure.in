@@ -1,0 +1,135 @@
+AC_INIT(wasabi, 0.1)
+AC_PREREQ(2.5)
+
+AC_CONFIG_SRCDIR([src/precomp.cpp])
+AM_INIT_AUTOMAKE([-Wall -Werror foreign 1.7])
+AM_CONFIG_HEADER([config.h])
+
+AC_LANG_CPLUSPLUS
+AC_PROG_CXX
+AM_PROG_LIBTOOL
+
+wa_cppflags=""
+case `uname -s` in
+Darwin)
+	echo "configuring wasabi for darwin"
+	wa_cppflags="$wa_cppflags -DDARWIN"
+;;
+Linux)
+	echo "configuring wasabi for linux"
+  wa_cppflags="$wa_cppflags -DLINUX"
+;;
+esac
+AC_SUBST(wa_cppflags)
+
+# configure X includes (adapted from Enlightenment, thanks)
+
+x_dir=""
+x_cflags=""
+x_libs=""
+AC_PATH_XTRA
+AC_CHECK_HEADER(X11/X.h,
+  [
+    x_dir=${x_dir:-/usr/X11R6}
+    x_cflags=${x_cflags:--I${x_includes:-$x_dir/include}}
+    x_libs="${x_libs:--L${x_libraries:-$x_dir/lib}} -lX11 -lXext -lXinerama"
+  ],[
+    AC_MSG_ERROR([Cannot find X headers and libraries.])
+  ]
+)
+AC_SUBST(x_cflags)
+AC_SUBST(x_libs)
+
+# configure CoreFoundation (for Darwin) (adapted from Enlightenment, thanks)
+
+cf_cflags=""
+cf_libs=""
+PCPPFLAGS="${CPPFLAGS}"
+CPPFLAGS="${CPPFLAGS} -I /System/Library/Frameworks/CoreFoundation.framework/Headers"
+AC_CHECK_HEADERS(CFBase.h,
+  [
+    cf_cflags="-I/System/Library/Frameworks/Kernel.framework/Versions/A/Headers"
+    cf_cflags="${cf_cflags} -I/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/"
+    cf_libs="-F/System/Library/Frameworks -framework 'CoreFoundation'"
+  ],[
+    AC_MSG_WARN([Cannot find CoreFoundation headers and libraries.])
+  ]
+)
+CPPFLAGS="${PCPPFLAGS}"
+AC_SUBST(cf_cflags)
+AC_SUBST(cf_libs)
+
+##
+## --enable/with flags:
+##
+
+# debug
+
+AC_ARG_ENABLE([debug],
+[  --enable-debug    Turn on debugging],
+[case "${enableval}" in
+yes) debug=true ;;
+no)  debug=false ;;
+*) AC_MSG_ERROR(bad value ${enableval} for --enable-debug) ;;
+esac],[debug=false])
+AM_CONDITIONAL(DEBUG, test x$debug = xtrue)
+
+# specify wasabicfg.h
+
+#default path
+wa_wasabicfg_path=src/wasabicfg/all
+AC_ARG_WITH([wasabicfg],
+AS_HELP_STRING([--with-wasabicfg=PATH],[Use the wasabicfg.h found in PATH (compiles APIs)]),
+[if test -d ${withval} ; then
+   wa_wasabicfg_path=$withval
+ else
+   AC_MSG_ERROR([bad value for --enable-wasabicfg])
+ fi],
+[AC_MSG_WARN([--enable-wasabicfg=PATH not given, using $wa_wasabicfg_path/wasabicfg.h])])
+#scan it
+WA_SCAN_WASABICFG([$wa_wasabicfg_path])
+wa_cppflags="$wa_cppflags -I\$(top_builddir)/$wa_wasabicfg_path"
+# in order for this to work, AM_CONDITIONALs have to be declared.
+# they must be named WA_x, with shell variable wa_x, where x is
+# the name *as declared in wasabicfg* after WASABI_COMPILE_
+AM_CONDITIONAL(WA_SVC,         [test x$wa_SVC = xtrue])
+AM_CONDITIONAL(WA_APP,         [test x$wa_APP = xtrue])
+AM_CONDITIONAL(WA_SYSCB,       [test x$wa_SYSCB = xtrue])
+AM_CONDITIONAL(WA_LINUX,       [test x$wa_LINUX = xtrue])
+AM_CONDITIONAL(WA_TIMERS,      [test x$wa_TIMERS = xtrue])
+AM_CONDITIONAL(WA_TEXTMODE,    [test x$wa_TEXTMODE = xtrue])
+AM_CONDITIONAL(WA_XMLPARSER,   [test x$wa_XMLPARSER = xtrue])
+
+# compile wnd-related stuff
+AC_ARG_ENABLE([wnd],
+AS_HELP_STRING([--enable-wnd],[Compile support for graphical interfaces (X11)]),
+[case "${enableval}" in
+    yes) wa_wnd=true ;;
+    no)  wa_wnd=false ;;
+    *) AC_MSG_ERROR([bad value for --enable-wnd])
+ esac],
+[wa_wnd=false])
+if test x$wa_wnd = xtrue;
+then
+  AC_MSG_NOTICE([enabling wnd support])
+  wa_cppflags="${wa_cppflags} -DX11"
+fi
+AM_CONDITIONAL([WA_WND], [test x$wa_wnd = xtrue])
+
+#check for sushi
+AC_MSG_CHECKING([for sushi])
+AC_MSG_RESULT(yes)
+#found some sushi, what kind of sauce would you like?
+AC_MSG_CHECKING([for preffered sauce])
+AC_MSG_RESULT(wasabi)
+
+##
+##
+##
+
+
+
+AC_CONFIG_FILES([Makefile src/Makefile src/wconfig/Makefile])
+AC_OUTPUT
+
+

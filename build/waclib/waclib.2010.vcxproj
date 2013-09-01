@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>waclib</ProjectName>
+    <ProjectGuid>{5955A578-030B-40CE-9F7E-B4E72ED166B4}</ProjectGuid>
+    <RootNamespace>waclib</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <AdditionalIncludeDirectories>.\..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\wac\waclient.cpp" />
+    <ClCompile Include="..\..\src\api\service\servicei.cpp" />
+    <ClCompile Include="..\..\src\api\service\svcs\svc_accessibility.cpp" />
+    <ClCompile Include="..\..\src\api\service\svcs\svc_action.cpp" />
+    <ClCompile Include="..\..\src\api\service\svcs\svc_console.cpp" />
+    <ClCompile Include="..\..\src\api\service\svcs\svc_contextCmd.cpp" />
+    <ClCompile Include="..\..\src\api\service\svcs\svc_coreadmin.cpp" />
+    <ClCompile Include="..\..\src\api\service\svcs\svc_db.cpp" />
+    <ClCompile Include="..\..\src\api\service\svcs\svc_debuggerui.cpp" />
+    <ClCompile Include="..\..\src\api\service\svcs\svc_droptarget.cpp" />
+    <ClCompile Include="..\..\src\api\service\svcs\svc_eval.cpp" />
+    <ClCompile Include="..\..\src\api\service\svcs\svc_fileread.cpp" />
+    <ClCompile Include="..\..\src\api\service\svcs\svc_filesel.cpp" />
+    <ClCompile Include="..\..\src\api\service\svcs\svc_font.cpp" />
+    <ClCompile Include="..\..\src\api\service\svcs\svc_imggen.cpp" />
+    <ClCompile Include="..\..\src\api\service\svcs\svc_imgload.cpp" />
+    <ClCompile Include="..\..\src\api\service\svcs\svc_itemmgr.cpp" />
+    <ClCompile Include="..\..\src\api\service\svcs\svc_mediaconverter.cpp" />
+    <ClCompile Include="..\..\src\api\service\svcs\svc_mediacore.cpp" />
+    <ClCompile Include="..\..\src\api\service\svcs\svc_minibrowser.cpp" />
+    <ClCompile Include="..\..\src\api\service\svcs\svc_objectdir.cpp" />
+    <ClCompile Include="..\..\src\api\service\svcs\svc_playlist.cpp" />
+    <ClCompile Include="..\..\src\api\service\svcs\svc_redir.cpp" />
+    <ClCompile Include="..\..\src\api\service\svcs\svc_scriptobj.cpp" />
+    <ClCompile Include="..\..\src\api\service\svcs\svc_skinfilter.cpp" />
+    <ClCompile Include="..\..\src\api\service\svcs\svc_storagevolenum.cpp" />
+    <ClCompile Include="..\..\src\api\service\svcs\svc_stringconverter.cpp" />
+    <ClCompile Include="..\..\src\api\service\svcs\svc_textfeed.cpp" />
+    <ClCompile Include="..\..\src\api\service\svcs\svc_tooltips.cpp" />
+    <ClCompile Include="..\..\src\api\service\svcs\svc_wndcreate.cpp" />
+    <ClCompile Include="..\..\src\api\service\svcs\svc_xmlprov.cpp" />
+    <ClCompile Include="..\..\src\api\service\svcs\svc_xuiobject.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

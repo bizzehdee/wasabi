@@ -1,0 +1,40 @@
+<xhd>
+  <class name="api_memmgr"
+         implementation="api_memmgrI"
+         class_header="api_memmgri.h"
+         class_module="api_memmgri.cpp"
+         xhd_factories="Interface"
+         dispatchable="1"
+         dispatchable_header="api_memmgrx.h"
+         dispatchable_module="api_memmgrx.cpp"
+         interface_header="api_memmgr.h"
+         interface_module="api_memmgr.cpp">
+    <method name="api_memmgrI" nodispatch="1" line="9">
+    </method>
+    <method name="~api_memmgrI" virtual="1" nodispatch="1" line="13">
+    </method>
+    <method name="getServiceName" type="const char *" line="19" static="1">
+    </method>
+    <method name="getServiceType" type="GUID" line="20" static="1">
+    </method>
+    <method name="sysMalloc" type="void *" dispatch_id="10" virtual="1" dispatch="1" line="17">
+      <param name="size" type="unsigned int"/>
+    </method>
+    <method name="sysFree" type="void" dispatch_id="20" virtual="1" dispatch="1" line="29">
+      <param name="ptr" type="void *"/>
+    </method>
+    <method name="sysReAlloc" type="void *" dispatch_id="30" virtual="1" dispatch="1" line="40">
+      <param name="ptr" type="void *"/>
+      <param name="size" type="unsigned int"/>
+    </method>
+    <method name="sysMemSet" type="void *" dispatch_id="40" line="25" virtual="1" dispatch="1">
+      <param name="ptr" type="void *"/>
+      <param name="val" type="int"/>
+      <param name="size" type="int"/>
+    </method>
+    <method name="sysMemZero" type="void *" dispatch_id="50" line="26" virtual="1" dispatch="1">
+      <param name="ptr" type="void *"/>
+      <param name="size" type="int"/>
+    </method>
+  </class>
+</xhd>

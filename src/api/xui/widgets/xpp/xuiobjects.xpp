@@ -1,0 +1,9 @@
+<xpp precompfile="precomp.h">
+    <class name="XUIObject" file="xuiobject.xhd" />
+    <class name="XUIGroup" file="xuigroup.xhd" />
+    <class name="XUIWindow" file="xuiwindow.xhd" />
+    <class name="XUIOSWindow" file="xuioswindow.xhd" />
+    <class name="XUILabel" file="xuilabel.xhd" />
+    <class name="XUIEdit" file="xuiedit.xhd" />
+    <class name="XUIDndSession" file="xuidndsession.xhd" />
+</xpp>

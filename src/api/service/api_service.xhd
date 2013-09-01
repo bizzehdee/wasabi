@@ -1,0 +1,73 @@
+<xhd>
+  <class name="api_service"
+         implementation="api_serviceI"
+         class_header="api_servicei.h"
+         class_module="api_servicei.cpp"
+         xhd_factories="Interface"
+         dispatchable="1"
+         dispatchable_header="api_servicex.h"
+         dispatchable_module="api_servicex.cpp"
+         interface_header="api_service.h"
+         interface_module="api_service.cpp">
+    <method name="api_serviceI" line="13" nodispatch="1">
+    </method>
+    <method name="~api_serviceI" line="14" virtual="1" nodispatch="1">
+    </method>
+    <method name="service_register" type="int" dispatch_id="10" line="25" dispatch="1">
+      <param name="svc" type="waServiceFactory *"/>
+    </method>
+    <method name="service_deregister" type="int" dispatch_id="20" line="35" dispatch="1">
+      <param name="svc" type="waServiceFactory *"/>
+    </method>
+    <method name="legacyService_getNumServices" type="int" dispatch_id="30" line="46" dispatch="1">
+      <param name="svc_type" type="FOURCC"/>
+    </method>
+    <method name="service_getNumServices" type="int" dispatch_id="31" line="47" dispatch="1">
+      <param name="svc_type" type="GUID"/>
+    </method>
+    <method name="legacyService_enumService" type="waServiceFactory *" dispatch_id="40" line="59" dispatch="1">
+      <param name="svc_type" type="FOURCC"/>
+      <param name="n" type="int"/>
+    </method>
+    <method name="service_enumService" type="waServiceFactory *" dispatch_id="41" line="60" dispatch="1">
+      <param name="svc_type" type="GUID"/>
+      <param name="n" type="int"/>
+    </method>
+    <method name="service_getServiceByGuid" type="waServiceFactory *" dispatch_id="50" line="70" dispatch="1">
+      <param name="guid" type="GUID"/>
+    </method>
+    <method name="service_lock" type="int" dispatch_id="60" line="81" dispatch="1">
+      <param name="owner" type="waServiceFactory *"/>
+      <param name="svcptr" type="void *"/>
+    </method>
+    <method name="service_clientLock" type="int" dispatch_id="70" line="91" dispatch="1">
+      <param name="svcptr" type="void *"/>
+    </method>
+    <method name="service_release" type="int" dispatch_id="80" line="102" dispatch="1">
+      <param name="svcptr" type="void *"/>
+    </method>
+    <method name="legacyService_getTypeName" type="const char *" dispatch_id="90" line="112" dispatch="1">
+      <param name="svc_type" type="FOURCC"/>
+    </method>
+    <method name="service_getTypeName" type="const char *" dispatch_id="91" line="113" dispatch="1">
+      <param name="svc_type" type="GUID"/>
+    </method>
+    <method name="service_getOwningComponent" type="GUID" dispatch_id="100" line="128" dispatch="1">
+      <param name="svcptr" type="void *"/>
+    </method>
+    <method name="service_getLockingComponent" type="GUID" dispatch_id="110" line="137" dispatch="1">
+      <param name="svcptr" type="void *"/>
+    </method>
+    <method name="service_unlock" type="int" dispatch_id="120" line="145" dispatch="1">
+      <param name="svcptr" type="void *"/>
+    </method>
+    <method name="legacyService_isvalid" type="int" dispatch_id="130" line="147" dispatch="1">
+      <param name="svctype" type="FOURCC"/>
+      <param name="service" type="waServiceFactory *"/>
+    </method>
+    <method name="service_isvalid" type="int" dispatch_id="131" line="148" dispatch="1">
+      <param name="svctype" type="GUID"/>
+      <param name="service" type="waServiceFactory *"/>
+    </method>
+  </class>
+</xhd>

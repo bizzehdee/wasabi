@@ -1,0 +1,265 @@
+<xhd>
+  <class name="DomNode"
+         implementation="DomNodeI"
+         class_header="domnodei.h"
+         class_module="domnodei.cpp"
+         dispatchable="1"
+         xhd_factories="Interface"
+         interface_header="domnode.h"
+         interface_module="domnode.cpp"
+         dispatchable_header="domnodex.h"
+         dispatchable_module="domnodex.cpp">
+    <method name="DomNodeI" line="61">
+    </method>
+    <method name="~DomNodeI" line="62" virtual="1">
+    </method>
+    <method name="appendChild" type="DomNode *" line="69" dispatch_id="10" virtual="1" dispatch="1">
+      <param name="newChild" type="DomNode *"/>
+    </method>
+    <method name="cloneNode" type="DomNode *" line="71" dispatch_id="30" virtual="1" dispatch="1">
+      <param name="deep" type="bool"/>
+    </method>
+    <method name="getAttributes" type="DomNodeMap" line="73" dispatch_id="190" virtual="1" dispatch="1">
+    </method>
+    <method name="getChildNodes" type="DomNodeList" line="75" dispatch_id="200" virtual="1" dispatch="1">
+    </method>
+    <method name="getFirstChild" type="DomNode *" line="77" dispatch_id="270" virtual="1" dispatch="1">
+    </method>
+    <method name="getLastChild" type="DomNode *" line="79" dispatch_id="290" virtual="1" dispatch="1">
+    </method>
+    <method name="getLocalName" type="String" line="81" dispatch_id="310" virtual="1" dispatch="1">
+    </method>
+    <method name="getNamespaceURI" type="String" line="83" dispatch_id="330" virtual="1" dispatch="1">
+    </method>
+    <method name="getNextSibling" type="DomNode *" line="85" dispatch_id="340" virtual="1" dispatch="1">
+    </method>
+    <method name="getNodeName" type="String" line="87" dispatch_id="350" virtual="1" dispatch="1">
+    </method>
+    <method name="getNodeType" type="short" line="89" dispatch_id="360" virtual="1" dispatch="1">
+    </method>
+    <method name="getNodeValue" type="String" line="91" dispatch_id="370" virtual="1" dispatch="1">
+    </method>
+    <method name="getOwnerDocument" type="DomDocument *" line="93" dispatch_id="380" virtual="1" dispatch="1">
+    </method>
+    <method name="getParentNode" type="DomNode *" line="95" dispatch_id="400" virtual="1" dispatch="1">
+    </method>
+    <method name="getPrefix" type="String" line="97" dispatch_id="410" virtual="1" dispatch="1">
+    </method>
+    <method name="getPreviousSibling" type="DomNode *" line="99" dispatch_id="420" virtual="1" dispatch="1">
+    </method>
+    <method name="hasAttributes" type="bool" line="101" dispatch_id="480" virtual="1" dispatch="1">
+    </method>
+    <method name="hasChildNodes" type="bool" line="103" dispatch_id="490" virtual="1" dispatch="1">
+    </method>
+    <method name="insertBefore" type="DomNode *" line="105" dispatch_id="510" virtual="1" dispatch="1">
+      <param name="newChild" type="DomNode *"/>
+      <param name="refChild" type="DomNode *"/>
+    </method>
+    <method name="isSupported" type="bool" line="107" dispatch_id="530" virtual="1" dispatch="1">
+      <param name="feature" type="String"/>
+      <param name="version" type="String"/>
+    </method>
+    <method name="normalize" type="void" line="109" dispatch_id="540" virtual="1" dispatch="1">
+    </method>
+    <method name="removeChild" type="DomNode *" line="111" dispatch_id="580" virtual="1" dispatch="1">
+      <param name="oldChild" type="DomNode *"/>
+    </method>
+    <method name="replaceChild" type="DomNode *" line="113" dispatch_id="590" virtual="1" dispatch="1">
+      <param name="newChild" type="DomNode *"/>
+      <param name="oldChild" type="DomNode *"/>
+    </method>
+    <method name="setNodeValue" type="void" line="115" dispatch_id="660" virtual="1" dispatch="1">
+      <param name="nodeValue" type="String"/>
+    </method>
+    <method name="setPrefix" type="void" line="117" dispatch_id="670" virtual="1" dispatch="1">
+      <param name="prefix" type="String"/>
+    </method>
+    <method name="createAttribute" type="DomAttr *" line="122" dispatch_id="40" virtual="1" dispatch="1">
+      <param name="name" type="String"/>
+    </method>
+    <method name="createAttributeNS" type="DomAttr *" line="124" dispatch_id="50" virtual="1" dispatch="1">
+      <param name="namespaceURI" type="String"/>
+      <param name="qualifiedName" type="String"/>
+    </method>
+    <method name="createCDATASection" type="DomCDATASection *" line="126" dispatch_id="60" virtual="1" dispatch="1">
+      <param name="data" type="String"/>
+    </method>
+    <method name="createComment" type="DomComment *" line="128" dispatch_id="70" virtual="1" dispatch="1">
+      <param name="data" type="String"/>
+    </method>
+    <method name="createDocumentFragment" type="DomDocumentFragment *" line="130" dispatch_id="80" virtual="1" dispatch="1">
+    </method>
+    <method name="createElement" type="DomElement *" line="132" dispatch_id="90" virtual="1" dispatch="1">
+      <param name="tagName" type="String"/>
+    </method>
+    <method name="createElementNS" type="DomElement *" line="134" dispatch_id="100" virtual="1" dispatch="1">
+      <param name="namespaceURI" type="String"/>
+      <param name="qualifiedName" type="String"/>
+    </method>
+    <method name="createEntityReference" type="DomEntityReference *" line="136" dispatch_id="110" virtual="1" dispatch="1">
+      <param name="name" type="String"/>
+    </method>
+    <method name="createProcessingInstruction" type="DomProcessingInstruction *" line="138" dispatch_id="120" virtual="1" dispatch="1">
+      <param name="target" type="String"/>
+      <param name="data" type="String"/>
+    </method>
+    <method name="createTextNode" type="DomText *" line="140" dispatch_id="130" virtual="1" dispatch="1">
+      <param name="data" type="String"/>
+    </method>
+    <method name="getDoctype" type="DomDocumentType *" line="142" dispatch_id="220" virtual="1" dispatch="1">
+    </method>
+    <method name="getDocumentElement" type="DomElement *" line="144" dispatch_id="230" virtual="1" dispatch="1">
+    </method>
+    <method name="getElementById" type="DomElement *" line="146" dispatch_id="240" virtual="1" dispatch="1">
+      <param name="elementId" type="String"/>
+    </method>
+    <method name="getElementsByTagName" type="DomNodeList" line="148" dispatch_id="250" virtual="1" dispatch="1">
+      <param name="tagname" type="String"/>
+    </method>
+    <method name="getElementsByTagNameNS" type="DomNodeList" line="150" dispatch_id="260" virtual="1" dispatch="1">
+      <param name="namespaceURI" type="String"/>
+      <param name="localName" type="String"/>
+    </method>
+    <method name="getImplementation" type="DomImplementation *" line="152" dispatch_id="280" virtual="1" dispatch="1">
+    </method>
+    <method name="importNode" type="DomNode *" line="154" dispatch_id="500" virtual="1" dispatch="1">
+      <param name="importedNode" type="DomNode *"/>
+      <param name="deep" type="bool"/>
+    </method>
+    <method name="appendData" type="void" line="159" dispatch_id="20" virtual="1" dispatch="1">
+      <param name="arg" type="String"/>
+    </method>
+    <method name="deleteData" type="void" line="161" dispatch_id="140" virtual="1" dispatch="1">
+      <param name="offset" type="int"/>
+      <param name="count" type="int"/>
+    </method>
+    <method name="getData" type="String" line="163" dispatch_id="210" virtual="1" dispatch="1">
+    </method>
+    <method name="getLength" type="int" line="165" dispatch_id="300" virtual="1" dispatch="1">
+    </method>
+    <method name="insertData" type="void" line="167" dispatch_id="520" virtual="1" dispatch="1">
+      <param name="offset" type="int"/>
+      <param name="arg" type="String"/>
+    </method>
+    <method name="replaceData" type="void" line="169" dispatch_id="600" virtual="1" dispatch="1">
+      <param name="offset" type="int"/>
+      <param name="count" type="int"/>
+      <param name="arg" type="String"/>
+    </method>
+    <method name="setData" type="void" line="171" dispatch_id="650" virtual="1" dispatch="1">
+      <param name="data" type="String"/>
+    </method>
+    <method name="substringData" type="String" line="173" dispatch_id="700" virtual="1" dispatch="1">
+      <param name="offset" type="int"/>
+      <param name="count" type="int"/>
+    </method>
+    <method name="getAttribute" type="String" line="178" dispatch_id="150" virtual="1" dispatch="1">
+      <param name="name" type="String"/>
+    </method>
+    <method name="getAttributeNode" type="DomAttr *" line="180" dispatch_id="160" virtual="1" dispatch="1">
+      <param name="name" type="String"/>
+    </method>
+    <method name="getAttributeNodeNS" type="DomAttr *" line="182" dispatch_id="170" virtual="1" dispatch="1">
+      <param name="namespaceURI" type="String"/>
+      <param name="localName" type="String"/>
+    </method>
+    <method name="getAttributeNS" type="String" line="184" dispatch_id="180" virtual="1" dispatch="1">
+      <param name="namespaceURI" type="String"/>
+      <param name="localName" type="String"/>
+    </method>
+    <method name="getTagName" type="String" line="190" dispatch_id="440" virtual="1" dispatch="1">
+    </method>
+    <method name="hasAttribute" type="bool" line="192" dispatch_id="460" virtual="1" dispatch="1">
+      <param name="name" type="String"/>
+    </method>
+    <method name="hasAttributeNS" type="bool" line="194" dispatch_id="470" virtual="1" dispatch="1">
+      <param name="namespaceURI" type="String"/>
+      <param name="localName" type="String"/>
+    </method>
+    <method name="removeAttribute" type="void" line="196" dispatch_id="550" virtual="1" dispatch="1">
+      <param name="name" type="String"/>
+    </method>
+    <method name="removeAttributeNode" type="DomAttr *" line="198" dispatch_id="560" virtual="1" dispatch="1">
+      <param name="oldAttr" type="DomAttr *"/>
+    </method>
+    <method name="removeAttributeNS" type="void" line="200" dispatch_id="570" virtual="1" dispatch="1">
+      <param name="namespaceURI" type="String"/>
+      <param name="localName" type="String"/>
+    </method>
+    <method name="setAttribute" type="void" line="202" dispatch_id="610" virtual="1" dispatch="1">
+      <param name="name" type="String"/>
+      <param name="value" type="String"/>
+    </method>
+    <method name="setAttributeNode" type="DomAttr *" line="204" dispatch_id="620" virtual="1" dispatch="1">
+      <param name="newAttr" type="DomAttr *"/>
+    </method>
+    <method name="setAttributeNodeNS" type="DomAttr *" line="206" dispatch_id="630" virtual="1" dispatch="1">
+      <param name="newAttr" type="DomAttr *"/>
+    </method>
+    <method name="setAttributeNS" type="void" line="208" dispatch_id="640" virtual="1" dispatch="1">
+      <param name="namespaceURI" type="String"/>
+      <param name="qualifiedName" type="String"/>
+      <param name="value" type="String"/>
+    </method>
+    <method name="splitText" type="DomText *" line="212" dispatch_id="690" virtual="1" dispatch="1">
+      <param name="offset" type="int"/>
+    </method>
+    <method name="getName" type="String" line="217" dispatch_id="320" virtual="1" dispatch="1">
+    </method>
+    <method name="getOwnerElement" type="DomElement *" line="219" dispatch_id="390" virtual="1" dispatch="1">
+    </method>
+    <method name="getSpecified" type="bool" line="221" dispatch_id="430" virtual="1" dispatch="1">
+    </method>
+    <method name="getValue" type="String" line="223" dispatch_id="450" virtual="1" dispatch="1">
+    </method>
+    <method name="setValue" type="void" line="225" dispatch_id="680" virtual="1" dispatch="1">
+      <param name="value" type="String"/>
+    </method>
+    <method name="loadXml" type="int" line="217" dispatch_id="710" nodispatch="1">
+      <param name="S" type="const String"/>
+      <param name="ks" type="int *" default="NULL"/>
+    </method>
+    <method name="xmlTestPath" type="DomNodeI *" line="229" dispatch_id="770" virtual="1" nodispatch="1">
+      <param name="xmlpath" type="const char *"/>
+      <param name="xmltag" type="const char *"/>
+    </method>
+    <method name="xmlSetTag" type="void" line="230" dispatch_id="760" virtual="1" nodispatch="1">
+      <param name="xmlpath" type="const char *"/>
+      <param name="xmltag" type="const char *"/>
+    </method>
+    <method name="xmlSetData" type="void" line="231" dispatch_id="740" virtual="1" nodispatch="1">
+      <param name="xmlpath" type="const char *"/>
+      <param name="xmltag" type="const char *"/>
+      <param name="xmldata" type="const char *"/>
+    </method>
+    <method name="xmlSetParams" type="void" line="232" dispatch_id="750" virtual="1" nodispatch="1">
+      <param name="xmlpath" type="const char *"/>
+      <param name="xmltag" type="const char *"/>
+      <param name="xmlparams" type="XmlReaderParams *"/>
+    </method>
+    <method name="xmlComplete" type="void" line="233" dispatch_id="730" virtual="1" nodispatch="1">
+      <param name="xmlpath" type="const char *"/>
+      <param name="xmltag" type="const char *"/>
+    </method>
+    <method name="setError" type="void" line="234" dispatch_id="720" virtual="1" nodispatch="1">
+    </method>
+    <data  name="m_nodeName" type="String" line="225" scope="protected">
+    </data>
+    <data  name="m_nodePrefix" type="String" line="226" scope="protected">
+    </data>
+    <data  name="m_namespaceURI" type="String" line="227" scope="protected">
+    </data>
+    <data  name="m_nodeValue" type="String" line="228" scope="protected">
+    </data>
+    <data  name="m_owner" type="DomNodeI *" line="229" scope="protected">
+    </data>
+    <data  name="m_issued" type="PtrList %3C DomNodeI %3E" line="226" scope="protected">
+    </data>
+    <data  name="m_attrs" type="DomNodeMap" line="232" scope="protected">
+    </data>
+    <data  name="m_error" type="int" line="227" scope="protected">
+    </data>
+    <data  name="m_type" type="int" line="228" scope="protected">
+    </data>
+  </class>
+</xhd>

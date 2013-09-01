@@ -1,0 +1,24 @@
+To compile :
+
+cd build
+./make-wasabitest
+./make-wconfig
+
+Do NOT run ./configure directly on the command line, unless you provide it with the C and CXX flags that point to your wasabicfg.h
+
+Overview : 
+
+The source code is in the src/ subdirectory, the top directory is the base directory for make but it will not compile
+out of the box, you need to visit the ./build directory and configure your wasabi library from there, or compile
+a project that has a similar configuration as that which you want and steal the libwasabi.a from it (see build/make-*,
+each project copies its libwasabi.a in the build directory after compilation).
+
+--
+
+wasabitest is a small testing application, that tries the various APIs.
+
+wconfig is something i'm working on to take care of the dependencies between APIs and other packages, so that it'll
+build automatically the configure scripts (or rather it'll build scripts that will run configure with the right
+parameters). ultimately it could even generate the sdk, or something, but we'll see.
+
+

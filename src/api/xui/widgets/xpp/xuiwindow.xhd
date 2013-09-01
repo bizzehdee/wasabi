@@ -1,0 +1,20 @@
+<xhd>
+  <class name="XUIWindow"
+         implementation="XUIWindow"
+         class_header="..\xuiwindow.h"
+         class_module="..\xuiwindow.cpp"
+         xhd_factories="SourceSink;JSScriptable"
+         SourceSink_h="../sourcesink/XUIWindowEventSource.h"
+         SourceSink_cpp="../sourcesink/XUIWindowEventSource.cpp"
+         JSScriptable_h="../js/JSXUIWindow.h"
+         JSScriptable_cpp="../js/JSXUIWindow.cpp"
+         SourceSink_h2="../sourcesink/XUIWindowEventSink.h"
+         guid_jsScriptable="{E3EC8334-8AAB-4434-9921-F873803BEC22}">
+    <method name="XUIWindow" line="17">
+    </method>
+    <method name="onAttributeChanged" type="void" virtual="1" line="15">
+      <param name="attributeName" type="const char *"/>
+      <param name="attributeValue" type="const char *"/>
+    </method>
+  </class>
+</xhd>

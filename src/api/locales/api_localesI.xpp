@@ -1,0 +1,3 @@
+<xpp precompfile="precomp.h">
+  <class name="api_locales" file="api_localesI.xhd"/>
+</xpp>

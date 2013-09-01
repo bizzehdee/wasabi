@@ -1,0 +1,23 @@
+<xhd>
+  <class name="XUILabel"
+         implementation="XUILabel"
+         class_header="..\xuilabel.h"
+         class_module="..\xuilabel.cpp"
+         xhd_factories="SourceSink;JSScriptable"
+         SourceSink_h="../sourcesink/XUILabelEventSource.h"
+         SourceSink_cpp="../sourcesink/XUILabelEventSource.cpp"
+         JSScriptable_h="../js/JSXUILabel.h"
+         JSScriptable_cpp="../js/JSXUILabel.cpp"
+         SourceSink_h2="../sourcesink/XUILabelEventSink.h"
+         guid_jsScriptable="{A730FB29-6066-4620-AF85-E37392532C7F}">
+    <method name="onAttributeChanged" type="void" virtual="1" line="31">
+      <param name="attributeName" type="const char *"/>
+      <param name="attributeValue" type="const char *"/>
+    </method>
+    <method name="ACCESS_SOURCE_WND" line="18">
+      <param name="m_statictext" type=""/>
+      <param name="StaticTextWnd" type=""/>
+      <param name="XUILabel_PARENT" type=""/>
+    </method>
+  </class>
+</xhd>

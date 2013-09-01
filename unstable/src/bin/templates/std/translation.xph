@@ -1,0 +1,1054 @@
+<!-- *********************************************************************************** -->
+<!--                                                                                     -->
+<!--   translation.xph : implements common procedures for in/out parameter translation   -->
+<!--                                                                                     -->
+<!-- *********************************************************************************** -->
+<!--                                                                                     -->
+<!-- Version history :                                                                   -->
+<!--                                                                                     -->
+<!--   3/22/2004 : changed error messages to use error tag, added check procs            -->
+<!--   3/21/2004 : removed flat castings, added support for macrocasts instead           -->
+<!--   3/20/2004 : added more callback support                                           -->
+<!--   3/19/2004 : added non-parameter return value support                              -->
+<!--   3/16/2004 : added data procs and flat castings                                    -->
+<!--   3/12/2004 : added voidparam support and paramcallback proc                        -->
+<!--   3/11/2004 : added basic translation                                               -->
+<!--   3/08/2004 : first version, performs basic mapping                                 -->
+<!--                                                                                     -->
+<!-- *********************************************************************************** -->
+
+
+
+<!-- *********************************************************************************** -->
+<!--                                                                                     -->
+<!-- std_translate_method_paramlist                                                      -->
+<!--                                                                                     -->
+<!-- context: method                                                                     -->
+<!--                                                                                     -->
+<!-- purpose:                                                                            -->
+<!--                                                                                     -->
+<!--  make a list of (comma separated) parameters with their translated types.           -->
+<!--  see std_translate_callparams if you need to handle conversion to/from temporary    -->
+<!--  variables                                                                          -->
+<!--                                                                                     -->
+<!-- params :                                                                            -->
+<!--                                                                                     -->
+<!--   map             : the map to use for typemapping (mandatory)                      -->
+<!--   return_as_param : "" (no return type as a param, default), "first", or "last"     -->
+<!--   inout           : 0 (default) or 1 to include in/out/inout keywords               -->
+<!--   basemapping     : 0 (default) or 1 to use only base type mappings                 -->
+<!--   types           : 0 (do not output parameter types), or 1 (default)               -->
+<!--   voidparam       : 0 (default), or 1 (if no parameter, output "void")              -->
+<!--   forceouttype    : force out/inout params to use this type (optional)              -->
+<!--                                                                                     -->
+<!-- *********************************************************************************** -->
+
+<proc id="std_translate_method_paramlist">  
+
+ <call id="std_translate_checkmethod"/>
+
+ <if text="$types" match=""><set id="types" value="1"/></if>
+ <set id="return_first"><if text="$return_as_param" match="first">1<else>0</else></if></set>
+ <set id="return_last"><if text="$return_as_param" match="last">1<else>0</else></if></set>
+
+ <set id="retparam">
+  <if text="$forcedouttype" match="">
+   <if object="methods" isoftype="void" not="1">
+    <if bool="$inout">out%20</if>
+    <if bool="$types">
+     <set id="mappedrettype"><map type="$(method.returntype)" map="$map" basemapping="$basemapping"/></set>
+     <get id="mappedrettype"/> 
+    <if bool="$basemapping" not="1"><if text="$mappedrettype" match="*%26" not="1">*</if></if>
+     </if>
+   retVal
+   </if>
+   <else>
+    <get id="forcedouttype"/>retVal
+   </else>
+  </if>
+ </set>
+
+ <if text="$(method.numparams)" match="0">
+  <if text="$retparam" match="">
+   <if bool="$voidparam">
+    void
+   </if>
+  </if>
+ </if>
+
+ <if bool="$return_first">
+  <if object="methods" isoftype="void" not="1">
+   <get id="retparam"/>
+   <if text="$(method.numparams)" match="0" not="1">, </if>
+  </if>
+ </if>
+
+ <foreach objects="params">
+  <set id="_forceout">
+   <if text="$forcedouttype" match="" not="1">
+    <if object="param" isoftype="out|inout">
+     <get id="forcedouttype"/>
+    </if>
+   </if>
+  </set>
+  <forcomma/>
+  <if bool="$inout"><param data="io"/></if>
+  <if bool="$types">
+   <if text="$_forceout" match="">
+    <map type="$(param.type)" map="$map" basemapping="$basemapping"/>
+    <else><get id="_forceout"/></else>
+   </if>
+  </if>
+  <param data="name"/>
+ </foreach>
+
+ <if bool="$return_last">
+  <if object="methods" isoftype="void" not="1">
+   <if text="$(method.numparams)" match="0" not="1">, </if>
+   <get id="retparam"/>
+  </if>
+ </if>
+
+</proc>
+
+
+<!-- *********************************************************************************** -->
+<!--                                                                                     -->
+<!-- std_translate_decl                                                                  -->
+<!--                                                                                     -->
+<!-- context: method                                                                     -->
+<!--                                                                                     -->
+<!-- purpose:                                                                            -->
+<!--                                                                                     -->
+<!--  declares the temporary variables that are needed to accomplish in/out translation  -->
+<!--                                                                                     -->
+<!-- params :                                                                            -->
+<!--                                                                                     -->
+<!--   map          : the map to use for typemapping (mandatory)                         -->
+<!--   reverse      : 0 (default) or 1 to translate the other way around (ie, callback)  -->
+<!--   forcedallout : 0 (default) or 1 to force declaration of a temp variable for any   -->
+<!--                  out/inout param                                                    -->
+<!--   callback     : a callback to call for each temporary variable declared (optional) -->
+<!--                                                                                     -->
+<!-- *********************************************************************************** -->
+
+<proc id="std_translate_decl">
+
+  <call id="std_translate_checkmethod"/>
+
+  <foreach objects="params">
+   <set id="_paramtype" value=""/>
+   <set id="_paramname" value=""/>
+
+   <!-- declare cast variables if needed -->
+   <set id="mappedtype">
+    <map type="$(param.type)" map="$map" basemapping="1"/>
+   </set>
+   <set id="mappedtype_i">
+    <map type="$(param.type)" map="$map" basemapping="1" impl="1"/>
+   </set>
+   <set id="cast">
+    <if bool="$reverse" not="1">
+     <cast from="$mappedtype" to="$(param.type.delsuffix.*)"/>
+     <else><cast to="$mappedtype" from="$(param.type.delsuffix.*)"/></else>
+    </if>
+   </set>
+
+   <set id="_declareit">
+    <if text="$cast" match="" not="1"> <!-- if no casting function available, assume types are compatible, so skip the declaration -->
+     <if text="$cast" match="static" not="1"> <!-- if cast isn't static -->
+      1
+     </if>
+    </if>
+   </set>
+   <if bool="$forcedallout">
+    <if bool="$_declareit" not="1">
+     <set id="_declareit">
+      <if object="param" isoftype="out|inout">
+       1
+      </if>
+     </set>
+    </if>
+   </if>
+
+   <if bool="$_declareit"> 
+    <if object="params" isoftype="out|inout">
+     <set id="_paramtype">
+      <if bool="$reverse" not="1">
+       <param data="type" delsuffix=" *| %26"/>
+       <else><get id="mappedtype_i"/></else>
+      </if> 
+     </set>
+     <get id="_paramtype"/>
+     <set id="_paramname">
+      __<param data="name"/>
+     </set>
+     <get id="_paramname"/>;<br/>
+     <else>
+      <set id="_paramtype">
+       <if bool="$reverse" not="1">
+        <param data="type"/>
+        <else><get id="mappedtype_i"/></else>
+       </if> 
+      </set>
+      <get id="_paramtype"/>
+      <set id="_paramname">
+       __<param data="name"/>
+      </set>
+      <get id="_paramname"/>;<br/>
+     </else>
+    </if>
+   </if>
+   <if text="$_paramtype" match="" not="1">
+    <if text="$callback" match="" not="1">
+     <call id="$callback" type="$_paramtype" name="$_paramname"/>
+    </if>
+   </if>
+  </foreach>
+
+</proc>
+
+
+<!-- *********************************************************************************** -->
+<!--                                                                                     -->
+<!-- std_translate_in                                                                    -->
+<!--                                                                                     -->
+<!-- context: method                                                                     -->
+<!--                                                                                     -->
+<!-- purpose:                                                                            -->
+<!--                                                                                     -->
+<!--  converts input variables as needed to achieve in/out translation                   -->
+<!--                                                                                     -->
+<!-- params :                                                                            -->
+<!--                                                                                     -->
+<!--   map          : the map to use for typemapping (mandatory)                         -->
+<!--   reverse      : 0 (default) or 1 to translate the other way around (ie, callback)  -->
+<!--   verify       : verification macro ("" for none) - incompatible with macro casts   -->
+<!--                                                                                     -->
+<!-- *********************************************************************************** -->
+
+<proc id="std_translate_in">
+
+  <call id="std_translate_checkmethod"/>
+
+  <if text="$verify" match="" not="1">
+   <set id="begin_verify"><get id="verify"/>(</set>
+   <set id="end_verify">)</set>
+   <else>
+    <set id="begin_verify" value=""/>
+    <set id="end_verify" value=""/>
+   </else>
+  </if>
+  <foreach objects="params">
+   <!-- declare cast variables if needed -->
+   <set id="mappedtype">
+    <map type="$(param.type)" map="$map" nodefault="1" basemapping="1" />
+   </set>
+   <set id="cast">
+    <if bool="$reverse" not="1">
+     <cast from="$mappedtype" to="$(param.type.delsuffix.*)"/>
+     <else><cast to="$mappedtype" from="$(param.type.delsuffix.*)"/></else>
+    </if>
+   </set>
+   <set id="ismacrocast">
+    <if bool="$reverse" not="1">
+     <cast from="$mappedtype" to="$(param.type.delsuffix.*)" test="ismacro"/>
+     <else><cast to="$mappedtype" from="$(param.type.delsuffix.*)" test="ismacro"/></else>
+    </if>
+   </set>
+   <if text="$cast" match="" not="1"> <!-- if no casting function available, assume types are compatible, so skip the declaration -->
+    <if text="$cast" match="static" not="1"> <!-- if cast isn't static -->
+     <!-- IN and INOUT params need to be converted prior to the call -->
+     <if object="params" isoftype="in|inout">
+      <get id="begin_verify"/><get id="cast"/>(
+      <if bool="$ismacrocast"><param data="name"/>,%20</if>
+      <if object="params" isoftype="inout|pointer" op="and" not="1">%26</if>
+      <param data="name"/>, %26__<param data="name"/>)<get id="end_verify"/>;<br/>
+     </if>
+    </if>
+   </if>
+  </foreach>
+
+</proc>
+
+
+<!-- *********************************************************************************** -->
+<!--                                                                                     -->
+<!-- std_translate_ret1                                                                  -->
+<!--                                                                                     -->
+<!-- context: method                                                                     -->
+<!--                                                                                     -->
+<!-- purpose:                                                                            -->
+<!--                                                                                     -->
+<!--  declares the temporary return variable that is needed to accomplish in/out         -->
+<!--  translation and begins the assignment. following this call should be a function    -->
+<!--  call or a value to complete the assignment                                         -->
+<!--                                                                                     -->
+<!-- params :                                                                            -->
+<!--                                                                                     -->
+<!--   map          : the map to use for typemapping (mandatory)                         -->
+<!--   retasparam   : 0 (default) or 1 if retval is a param rather than an actual return -->
+<!--                  value                                                              -->
+<!--   reverse      : 0 (default) or 1 to translate the other way around (ie, callback)  -->
+<!--   callback     : a callback to call for each temporary variable declared (optional) -->
+<!--                                                                                     -->
+<!-- *********************************************************************************** -->
+
+<proc id="std_translate_ret1">
+
+ <call id="std_translate_checkmethod"/>
+
+ <if object="methods" isoftype="void" not="1">
+  <set id="std_translate_r_map">
+   <map type="$(method.returntype)" map="$map" />
+  </set>
+  <if bool="$retasparam" not="1">
+   <get id="std_translate_r_map"/> retVal;<br/>
+   <if text="$callback" match="" not="1">
+    <call id="$callback" type="$std_translate_r_map" name="retVal"/>
+   </if>
+  </if>
+  <set id="std_translate_r_cast">
+    <if bool="$reverse" not="1">
+     <cast from="$(method.returntype)" to="$std_translate_r_map"/>
+     <else><cast to="$(method.returntype)" from="$std_translate_r_map"/></else>
+    </if>
+  </set>
+  <if text="$std_translate_r_cast" match="" not="1"> <!-- if no casting function available, assume types are compatible, skip conversion -->
+   <method data="returntype"/> __retVal;<br/>__
+   <if text="$callback" match="" not="1">
+    <call id="$callback" type="$(method.returntype)" name="__retVal"/>
+   </if>
+   <else>
+    <if bool="$retasparam">
+     *
+    </if>
+   </else>
+  </if>
+  retVal =%20
+ </if>
+
+</proc>
+
+
+<!-- *********************************************************************************** -->
+<!--                                                                                     -->
+<!-- std_translate_callparams                                                            -->
+<!--                                                                                     -->
+<!-- context: method                                                                     -->
+<!--                                                                                     -->
+<!-- purpose:                                                                            -->
+<!--                                                                                     -->
+<!--  list the (comma separated) parameters for calling the method with in/out           -->
+<!--  translation. each parameter is either the actual parameter or a temporary variable -->
+<!--  declared with std_translate_in                                                     -->
+<!--                                                                                     -->
+<!-- params :                                                                            -->
+<!--                                                                                     -->
+<!--   map          : the map to use for typemapping (mandatory)                         -->
+<!--   reverse      : 0 (default) or 1 to translate the other way around (ie, callback)  -->
+<!--   forcedallout : 0 (default) or 1 to force usage of a temp variable for any         -->
+<!--                  out/inout param                                                    -->
+<!--                                                                                     -->
+<!-- *********************************************************************************** -->
+
+<proc id="std_translate_callparams">
+
+  <call id="std_translate_checkmethod"/>
+
+  <foreach objects="params">
+   <forcomma/>
+   <set id="closestaticcast" value="0"/>
+   <set id="mappedtype">
+    <map type="$(param.type)" map="$map" nodefault="1" basemapping="1"/>
+   </set>
+   <set id="cast">
+    <if bool="$reverse" not="1">
+     <cast from="$mappedtype" to="$(param.type.delsuffix.*)"/>
+     <else><cast to="$mappedtype" from="$(param.type.delsuffix.*)"/></else>
+    </if>
+   </set>
+
+   <set id="_usetemp">
+    <if text="$cast" match="" not="1"> <!-- if no casting function available, assume types are compatible, so skip the declaration -->
+     <if text="$cast" match="static" not="1"> <!-- if cast isn't static -->
+      1
+     </if>
+    </if>
+   </set>
+   <if bool="$forcedallout">
+    <if bool="$_usetemp" not="1">
+     <set id="_usetemp">
+      <if object="param" isoftype="out|inout">
+       1
+      </if>
+     </set>
+    </if>
+   </if>
+
+   <if bool="$_usetemp" >
+    <if object="params" isoftype="out|inout">
+     <if object="params" isoftype="pointer">
+      %26
+    </if>
+    </if>
+    __
+    <else>
+     <if text="$cast" match="static">
+      static_cast%3C
+      <if bool="$reverse" not="1"><param data="type" trim="1"/>
+      <else><map type="$(param.type)" map="$map" trim="1"/></else>
+      </if>
+      %3E(
+      <set id="closestaticcast">1</set>
+     </if>
+    </else>
+   </if>
+   <param data="name"/>
+   <if text="$closestaticcast" match="1">)</if>
+  </foreach>
+
+</proc>
+
+
+<!-- *********************************************************************************** -->
+<!--                                                                                     -->
+<!-- std_translate_out                                                                   -->
+<!--                                                                                     -->
+<!-- context: method                                                                     -->
+<!--                                                                                     -->
+<!-- purpose:                                                                            -->
+<!--                                                                                     -->
+<!--  converts output parameters as needed to achieve in/out translation                 -->
+<!--                                                                                     -->
+<!-- params :                                                                            -->
+<!--                                                                                     -->
+<!--   map          : the map to use for typemapping (mandatory)                         -->
+<!--   reverse      : 0 (default) or 1 to translate the other way around (ie, callback)  -->
+<!--   verify       : verification macro ("" for none) - incompatible with macro casts   -->
+<!--   forceall     : 0 (default) or 1 to force translation on all (out) params          -->
+<!--   castprefix   : prefix for the cast types (optional)                               -->
+<!--                                                                                     -->
+<!-- *********************************************************************************** -->
+
+<proc id="std_translate_out">
+
+ <call id="std_translate_checkmethod"/>
+
+ <if text="$verify" match="" not="1">
+  <set id="begin_verify"><get id="verify"/>(</set>
+  <set id="end_verify">)</set>
+  <else>
+   <set id="begin_verify" value=""/>
+   <set id="end_verify" value=""/>
+  </else>
+ </if>
+
+ <foreach objects="params">
+  <!-- cast back -->
+  <set id="mappedtype">
+   <map type="$(param.type)" map="$map" basemapping="1"/>
+  </set>
+  <set id="cast">
+    <if bool="$reverse" not="1">
+     <cast from="$(param.type.delsuffix.*)" to="$castprefix.$mappedtype"/>
+     <else><cast to="$(param.type.delsuffix.*)" from="$castprefix.$mappedtype"/></else>
+    </if>
+  </set>
+  <set id="ismacrocast">
+    <if bool="$reverse" not="1">
+     <cast from="$(param.type.delsuffix.*)" to="$castprefix.$mappedtype" test="ismacro"/>
+     <else><cast to="$(param.type.delsuffix.*)" from="$castprefix.$mappedtype" test="ismacro"/></else>
+    </if>
+  </set>
+
+  <set id="_dotrans">
+   <if bool="$forceall">
+    1
+    <else>
+     <if text="$cast" match="" not="1"> 
+      <if text="$cast" match="static" not="1"> 
+       1
+      </if>
+     </if>
+    </else>
+   </if>
+  </set>
+
+  <if bool="$_dotrans"> 
+   <if object="params" isoftype="out|inout">
+    <!-- OUT params need to be converted after the call -->
+    <get id="begin_verify"/><get id="cast"/>(
+    <if bool="$ismacrocast"><param data="name"/>,%20</if>
+    %26__<param data="name"/>,%20<if text="$mappedtype" match="*%26">%26</if>
+    <param data="name"/>)<get id="end_verify"/>;<br/>
+   </if>
+  </if>
+ </foreach>
+
+</proc>
+
+
+<!-- *********************************************************************************** -->
+<!--                                                                                     -->
+<!-- std_translate_ret2                                                                  -->
+<!--                                                                                     -->
+<!-- context: method                                                                     -->
+<!--                                                                                     -->
+<!-- purpose:                                                                            -->
+<!--                                                                                     -->
+<!--  converts return parameter as required by translation                               -->
+<!--                                                                                     -->
+<!-- params :                                                                            -->
+<!--                                                                                     -->
+<!--   std_translate_r_cast : casting function to use (you may ommit this parameter if   -->
+<!--                          std_translate_ret1 has been called for this method)        -->
+<!--   verify       : verification macro ("" for none) - incompatible with macro casts   -->
+<!--                                                                                     -->
+<!-- *********************************************************************************** -->
+
+<proc id="std_translate_ret2">
+
+ <if text="$verify" match="" not="1">
+  <set id="begin_verify"><get id="verify"/>(</set>
+  <set id="end_verify">)</set>
+  <else>
+   <set id="begin_verify" value=""/>
+   <set id="end_verify" value=""/>
+  </else>
+ </if>
+ <if object="methods" isoftype="void" not="1">
+  <if text="$std_translate_r_cast" match="" not="1"> <!-- if no casting function available, assume types are compatible, skip conversion -->
+   <get id="begin_verify"/><get id="std_translate_r_cast"/>(retVal, %26__retVal, retVal)<get id="end_verify"/>;<br/>
+  </if>
+ </if>
+
+</proc>
+
+
+
+<!-- *********************************************************************************** -->
+<!--                                                                                     -->
+<!-- std_translate_paramcallback                                                         -->
+<!--                                                                                     -->
+<!-- context: method                                                                     -->
+<!--                                                                                     -->
+<!-- purpose:                                                                            -->
+<!--                                                                                     -->
+<!--  executes a callback for each translated param type                                 -->
+<!--                                                                                     -->
+<!-- params :                                                                            -->
+<!--                                                                                     -->
+<!--   map         : the map to use for typemapping (mandatory)                          -->
+<!--   basemapping : 0 (default) or 1 to use only base type mappings                     -->
+<!--   proc        : procedure to call back with the param context (mandatory)           -->
+<!--   wantret     : 0 (default) or 1 to include the return value                        -->
+<!--                                                                                     -->
+<!-- callbackparams :                                                                    -->
+<!--                                                                                     -->
+<!--   type     : translated param type                                                  -->
+<!--   name     : param name                                                             -->
+<!--   count    : param number (-1 for return value)                                     -->
+<!--   io       : in/out/inout                                                           -->
+<!--                                                                                     -->
+<!-- *********************************************************************************** -->
+
+<proc id="std_translate_paramcallback">  
+
+ <call id="std_translate_checkmethod"/>
+
+ <foreach objects="params">
+  <set id="paramtype">
+   <map type="$(param.type)" map="$map" basemapping="$basemapping"/>
+  </set>
+  <call id="$proc" type="$paramtype" name="$(param.name)" count="$(forindex)" io="$(param.io)"/>
+ </foreach>
+
+ <if bool="$wantret">
+  <if object="methods" isoftype="void" not="1">
+   <set id="retparamtype">
+    <map type="$(method.returntype)" map="$map" basemapping="$basemapping"/> 
+    <if bool="$basemapping" not="1">*</if>
+   </set>
+   <set id="retparamname" value="retVal"/>
+   <call id="$proc" type="$retparamtype" name="$retparamname" count="-1" io="out"/>
+  </if>
+ </if>
+
+</proc>
+
+
+
+
+<!-- *********************************************************************************** -->
+<!--                                                                                     -->
+<!-- std_translate_data                                                                  -->
+<!--                                                                                     -->
+<!-- context: data                                                                       -->
+<!--                                                                                     -->
+<!-- purpose:                                                                            -->
+<!--                                                                                     -->
+<!--  translates the data type in the current context and appends the data's name.       -->
+<!--                                                                                     -->
+<!-- params :                                                                            -->
+<!--                                                                                     -->
+<!--   map             : the map to use for typemapping (mandatory)                      -->
+<!--   basemapping     : 0 (default) or 1 to use only base type mappings                 -->
+<!--   out             : 0 (default) or 1 to turn the type into a pointer to type        -->
+<!--                     as needed (ie, if type is not a reference)                      -->
+<!--   prefix          : prefix to use for data name (optional)                          -->
+<!--   lcleadname      : 0 (default) or 1 to force the first character of the data name  -->
+<!--                     to be lowercase                                                 -->
+<!--   ucleadname      : 0 (default) or 1 to force the first character of the data name  -->
+<!--                     to be uppercase                                                 -->
+<!--                                                                                     -->
+<!-- *********************************************************************************** -->
+
+<proc id="std_translate_data">
+
+ <set id="mappedtype">
+  <map type="$(data.type)" map="$map" basemapping="$basemapping"/>
+ </set>
+ <get id="mappedtype"/>
+ <if bool="$out">
+  <if text="$mappedtype" match="*%26" not="1">
+   *
+  </if>
+ </if>
+ <get id="prefix"/><data data="name" lclead="$lcleadname" uclead="$ucleadname"/>
+
+</proc>
+
+
+<!-- *********************************************************************************** -->
+<!--                                                                                     -->
+<!-- std_translate_data_decl                                                             -->
+<!--                                                                                     -->
+<!-- context: data                                                                       -->
+<!--                                                                                     -->
+<!-- purpose:                                                                            -->
+<!--                                                                                     -->
+<!--  declares a temporary variable to accomplish in/out translation if needed           -->
+<!--                                                                                     -->
+<!-- params :                                                                            -->
+<!--                                                                                     -->
+<!--   map          : the map to use for typemapping (mandatory)                         -->
+<!--   out          : 0 (default) or 1 if the translation is outbound                    -->
+<!--   forcedallout : 0 (default) or 1 to force declaration of a temp variable for any   -->
+<!--                  out/inout param                                                    -->
+<!--   callback     : a callback to call for each temporary variable declared (optional) -->
+<!--                                                                                     -->
+<!-- *********************************************************************************** -->
+
+<proc id="std_translate_data_decl">
+
+ <set id="_paramtype" value=""/>
+ <set id="_paramname" value=""/>
+
+ <!-- declare cast variables if needed -->
+ <set id="mappedtype">
+  <map type="$(data.type)" map="$map" basemapping="1"/>
+ </set>
+ <set id="mappedtype_i">
+  <map type="$(data.type)" map="$map" basemapping="1" impl="1"/>
+ </set>
+ <set id="cast">
+  <cast from="$mappedtype" to="$(data.type.delsuffix.*)"/>
+ </set>
+
+ <set id="_declareit">
+  <if text="$cast" match="" not="1"> <!-- if no casting function available, assume types are compatible, so skip the declaration -->
+   <if text="$cast" match="static" not="1"> <!-- if cast isn't static -->
+    1
+   </if>
+  </if>
+ </set>
+ <if bool="$forcedallout">
+  <if bool="$_declareit" not="1">
+   <set id="_declareit">
+    <if bool="$out">
+     1
+    </if>
+   </set>
+  </if>
+ </if>
+
+ <if bool="$_declareit"> 
+  <if bool="$out">
+   <set id="_paramtype">
+    <data data="type" delsuffix=" *| %26"/>
+   </set>
+   <set id="_paramname">
+    __<data data="name"/>
+   </set>
+   <get id="_paramtype"/>
+   <get id="_paramname"/>
+   ;<br/>
+   <else>
+    <set id="_paramtype">
+     <data data="type"/>
+    </set>
+    <set id="_paramname">
+     __<data data="name"/>
+    </set>
+    <get id="_paramtype"/>
+    <get id="_paramname"/>
+    ;<br/>
+   </else>
+  </if>
+ </if>
+ <if text="$_paramtype" match="" not="1">
+  <if text="$callback" match="" not="1">
+   <call id="$callback" type="$_paramtype" name="$_paramname"/>
+  </if>
+ </if>
+
+</proc>
+
+
+
+<!-- *********************************************************************************** -->
+<!--                                                                                     -->
+<!-- std_translate_datacallback                                                          -->
+<!--                                                                                     -->
+<!-- context: data                                                                       -->
+<!--                                                                                     -->
+<!-- purpose:                                                                            -->
+<!--                                                                                     -->
+<!--  executes a callback for the translated data type                                   -->
+<!--                                                                                     -->
+<!-- params :                                                                            -->
+<!--                                                                                     -->
+<!--   map         : the map to use for typemapping (mandatory)                          -->
+<!--   basemapping : 0 (default) or 1 to use only base type mappings                     -->
+<!--   proc        : procedure to call back with the param context (mandatory)           -->
+<!--   out         : 0 (default) or 1 if the translation is outbound                     -->
+<!--                                                                                     -->
+<!-- callbackparams :                                                                    -->
+<!--                                                                                     -->
+<!--   type     : translated param type                                                  -->
+<!--   name     : param name                                                             -->
+<!--   count    : always 0                                                               -->
+<!--   io       : in/out                                                                 -->
+<!--                                                                                     -->
+<!-- *********************************************************************************** -->
+
+<proc id="std_translate_paramcallback">  
+
+ <set id="_io">
+ <if bool="$out">out</if>
+ <else>in</else>
+ </set>
+ 
+ <set id="datatype">
+  <map type="$(data.type)" map="$map" basemapping="$basemapping"/>
+ </set>
+ <call id="$proc" type="$datatype" name="$(data.name)" count="0" io="$_io"/>
+
+</proc>
+
+
+<!-- *********************************************************************************** -->
+<!--                                                                                     -->
+<!-- std_translate_data_callparam                                                        -->
+<!--                                                                                     -->
+<!-- context: data                                                                       -->
+<!--                                                                                     -->
+<!-- purpose:                                                                            -->
+<!--                                                                                     -->
+<!--  outputs the data name for calling the data accessor with in/out translation.       -->
+<!--  the parameter is either the actual parameter or a temporary variable declared      -->
+<!--  with std_translate_data_in                                                         -->
+<!--                                                                                     -->
+<!-- params :                                                                            -->
+<!--                                                                                     -->
+<!--   map          : the map to use for typemapping (mandatory)                         -->
+<!--   out          : 0 (default) or 1 for outbound translations                         -->
+<!--   prefix       : (optional) prefix to use to match accessor parameter               -->
+<!--   lcleadname   : 0 (default) or 1 to force the first character of the data name     -->
+<!--                  to be lowercase                                                    -->
+<!--   ucleadname   : 0 (default) or 1 to force the first character of the data name     -->
+<!--                  to be uppercase                                                    -->
+<!--                                                                                     -->
+<!-- *********************************************************************************** -->
+
+<proc id="std_translate_data_callparam">
+
+ <set id="mappedtype">
+  <map type="$(data.type)" map="$map" nodefault="1" basemapping="1"/>
+ </set>
+ <set id="cast">
+  <cast from="$mappedtype" to="$(data.type.delsuffix.*)"/>
+ </set>
+
+ <if text="$cast" match="" not="1"> 
+  <if text="$cast" match="static" not="1"> 
+   <if bool="$out">
+     %26
+   </if>
+   __<data data="name"/>
+  </if>
+ </if>
+
+ <if text="$cast" match="static" > 
+  static_cast%3C
+  <data data="type" trim="1"/>
+  %3E(<get id="prefix"/><data data="name" lclead="$lcleadname" uclead="$ucleadname"/>)
+  <set id="closestaticcast">1</set>
+ </if>
+
+ <if text="$cast" match=""> 
+  <get id="prefix"/>
+  <data data="name" lclead="$lcleadname" uclead="$ucleadname"/>
+ </if>
+
+</proc>
+
+
+<!-- *********************************************************************************** -->
+<!--                                                                                     -->
+<!-- std_translate_data_assignout                                                        -->
+<!--                                                                                     -->
+<!-- context: data                                                                       -->
+<!--                                                                                     -->
+<!-- purpose:                                                                            -->
+<!--                                                                                     -->
+<!--  writes the assignment part of a outbound data translation.                         -->
+<!--                                                                                     -->
+<!-- params :                                                                            -->
+<!--                                                                                     -->
+<!--   map          : the map to use for typemapping (mandatory)                         -->
+<!--   retasparam   : 0 (default) or 1 if retval is a param rather than an actual return -->
+<!--                  value                                                              -->
+<!--   prefix       : (optional) prefix to use to match accessor parameter               -->
+<!--   lcleadname   : 0 (default) or 1 to force the first character of the data name     -->
+<!--                  to be lowercase                                                    -->
+<!--   ucleadname   : 0 (default) or 1 to force the first character of the data name     -->
+<!--                  to be uppercase                                                    -->
+<!--                                                                                     -->
+<!-- note : sets the variable $end_assignout which you should use to close a possible    -->
+<!--        static_cast                                                                  -->
+<!--                                                                                     -->
+<!-- *********************************************************************************** -->
+
+<proc id="std_translate_data_assignout">
+
+ <set id="end_assignout" value=""/>
+ <set id="mappedtype">
+  <map type="$(data.type)" map="$map" basemapping="1"/>
+ </set>
+ <set id="cast">
+  <cast from="$mappedtype" to="$(data.type.delsuffix.*)"/>
+ </set>
+
+ <if bool="$retasparam">
+  <if text="$cast" match="" not="1"> 
+    __<data data="name"/>
+   <else>
+    *<get id="prefix"/><data data="name" lclead="$lcleadname" uclead="$ucleadname"/>
+   </else>
+  </if>
+  %20=%20
+
+  <if text="$cast" match="static"> 
+   static_cast%3C
+   <data data="type" trim="1"/>
+   %3E(
+   <set id="end_assignout" value=")"/>
+  </if>
+
+  <else> <!-- ! retasparam -->
+
+   <if bool="$retasparam" not="1">
+    <get id="mappedtype"/> retVal;<br/>
+    <if text="$callback" match="" not="1">
+     <call id="$callback" type="$mappedtype" name="retVal"/>
+    </if>
+   </if>
+
+   <if text="$cast" match="" not="1"> 
+     __<data data="name"/>
+     <else>
+      retVal
+     </else>
+   </if>
+   %20=%20
+
+   <if text="$cast" match="static"> 
+    static_cast%3C
+    <data data="type" trim="1"/>
+    %3E(
+    <set id="end_assignout" value=")"/>
+   </if>
+
+  </else>
+
+ </if>
+
+
+
+</proc>
+
+
+std_translate_data_assign
+
+
+<!-- *********************************************************************************** -->
+<!--                                                                                     -->
+<!-- std_translate_data_out                                                              -->
+<!--                                                                                     -->
+<!-- context: method                                                                     -->
+<!--                                                                                     -->
+<!-- purpose:                                                                            -->
+<!--                                                                                     -->
+<!--  converts output data as needed to achieve in/out translation                       -->
+<!--                                                                                     -->
+<!-- params :                                                                            -->
+<!--                                                                                     -->
+<!--   map          : the map to use for typemapping (mandatory)                         -->
+<!--   retasparam   : 0 (default) or 1 if retval is a param rather than an actual return -->
+<!--                  value                                                              -->
+<!--   prefix       : (optional) prefix to use to match accessor parameter               -->
+<!--   lcleadname   : 0 (default) or 1 to force the first character of the data name     -->
+<!--                  to be lowercase                                                    -->
+<!--   ucleadname   : 0 (default) or 1 to force the first character of the data name     -->
+<!--                  to be uppercase                                                    -->
+<!--                                                                                     -->
+<!-- *********************************************************************************** -->
+
+<proc id="std_translate_data_out">
+
+ <!-- cast back -->
+ <set id="mappedtype">
+  <map type="$(data.type)" map="$map" nodefault="1" basemapping="1"/>
+ </set>
+ <set id="cast">
+  <cast from="$(data.type.delsuffix.*)" to="$mappedtype"/>
+ </set>
+ <set id="ismacrocast">
+  <cast from="$(data.type.delsuffix.*)" to="$mappedtype" test="ismacro"/>
+ </set>
+ <if text="$cast" match="" not="1"> <!-- if no casting function available, assume types are compatible, so skip the declaration -->
+  <if text="$cast" match="static" not="1"> <!-- if cast isn't static -->
+   <!-- OUT params need to be converted after the call -->
+   <get id="cast"/>(
+   <if bool="$ismacrocast"><data data="name"/>,%20</if>
+   %26__<data data="name"/>, 
+   <if bool="$retasparam">
+    <if text="$mappedtype" match="*%26">%26</if>
+    <get id="prefix"/><data data="name" lclead="$lcleadname" uclead="$ucleadname"/>
+    <else>
+     %26retVal
+    </else>
+   </if>
+   );<br/>
+  </if>
+ </if>
+
+</proc>
+
+<!-- *********************************************************************************** -->
+<!--                                                                                     -->
+<!-- std_translate_data_in                                                               -->
+<!--                                                                                     -->
+<!-- context: method                                                                     -->
+<!--                                                                                     -->
+<!-- purpose:                                                                            -->
+<!--                                                                                     -->
+<!--  converts data as needed to achieve in translation                                  -->
+<!--                                                                                     -->
+<!-- params :                                                                            -->
+<!--                                                                                     -->
+<!--   map          : the map to use for typemapping (mandatory)                         -->
+<!--   prefix       : (optional) prefix to use to match accessor parameter               -->
+<!--   lcleadname   : 0 (default) or 1 to force the first character of the data name     -->
+<!--                  to be lowercase                                                    -->
+<!--   ucleadname   : 0 (default) or 1 to force the first character of the data name     -->
+<!--                  to be uppercase                                                    -->
+<!--                                                                                     -->
+<!-- *********************************************************************************** -->
+
+<proc id="std_translate_data_in">
+
+ <!-- declare cast variable if needed -->
+ <set id="mappedtype">
+  <map type="$(data.type)" map="$map" nodefault="1" basemapping="1" />
+ </set>
+ <set id="cast">
+  <cast from="$mappedtype" to="$(data.type.delsuffix.*)"/>
+ </set>
+ <set id="ismacrocast">
+  <cast from="$mappedtype" to="$(data.type.delsuffix.*)" test="ismacro"/>
+ </set>
+ <if text="$cast" match="" not="1"> <!-- if no casting function available, assume types are compatible, so skip the declaration -->
+  <if text="$cast" match="static" not="1"> <!-- if cast isn't static -->
+   <get id="cast"/>(
+   <if bool="$ismacrocast"><data data="name"/>,%20</if>
+   <if object="data" isoftype="pointer" not="1">%26</if>
+   <get id="prefix"/><data data="name" uclead="$ucleadname" lclead="$lcleadname"/>
+   , %26__<data data="name"/>);<br/>
+  </if>
+ </if>
+
+</proc>
+
+
+<!-- *********************************************************************************** -->
+<!--                                                                                     -->
+<!-- std_translate_checkmethod                                                           -->
+<!--                                                                                     -->
+<!-- context: method                                                                     -->
+<!--                                                                                     -->
+<!-- purpose:                                                                            -->
+<!--                                                                                     -->
+<!--  verify that the method is properly set up for param translation                    -->
+<!--                                                                                     -->
+<!-- params :                                                                            -->
+<!--                                                                                     -->
+<!--  none                                                                               -->
+<!--                                                                                     -->
+<!-- *********************************************************************************** -->
+
+<proc id="std_translate_checkmethod">
+
+ <foreach objects="params">
+  <if object="params" isoftype="in|out|inout" not="1">
+   <error file="$(class.implementationheader)" line="$(method.sourceline)" text="IN, OUT, or INOUT has not been specified on parameter '$(param.name)' in method '$(method.name)'" />
+  </if>
+  <if object="params" isoftype="pointer|reference" not="1">
+   <if object="params" isoftype="out|inout">
+    <error file="$(class.implementationheader)" line="$(method.sourceline)" text="parameter '$(param.name)' in method '$(method.name)' is marked $(param.io) but does not appear to be a pointer nor a reference" />
+   </if>
+  </if>
+ </foreach>
+
+</proc>
+
+
+
+<!-- *********************************************************************************** -->
+<!--                                                                                     -->
+<!-- std_translate_checkclass                                                            -->
+<!--                                                                                     -->
+<!-- context: class                                                                      -->
+<!--                                                                                     -->
+<!-- purpose:                                                                            -->
+<!--                                                                                     -->
+<!--  verify that all the scripted methods in the class are properly set up for param    -->
+<!--  translation                                                                        -->
+<!--                                                                                     -->
+<!-- params :                                                                            -->
+<!--                                                                                     -->
+<!--  none                                                                               -->
+<!--                                                                                     -->
+<!-- *********************************************************************************** -->
+
+<proc id="std_translate_checkclass">
+
+ <foreach objects="methods">
+  <skip objects="methods" type="private|protected|ctor|dtor|static"/>
+  <skip objects="methods" type="script" not="1"/>
+  <call id="std_translate_checkmethod"/>
+ </foreach>
+
+</proc>

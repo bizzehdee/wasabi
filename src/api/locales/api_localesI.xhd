@@ -1,0 +1,43 @@
+<xhd>
+  <class name="api_locales"
+         implementation="api_localesI"
+         class_module="api_localesI.cpp"
+         class_header="api_localesI.h"
+         dispatchable="1"
+         xhd_factories="Interface"
+         interface_header="api_locales.h"
+         interface_module="api_locales.cpp"
+         dispatchable_header="api_localesX.h"
+         dispatchable_module="api_localesX.cpp">
+    <method name="api_localesI" line="20" nodispatch="1">
+    </method>
+    <method name="~api_localesI" line="21" nodispatch="1">
+    </method>
+    <method name="getServiceName" type="const char *" line="23" static="1">
+    </method>
+    <method name="getServiceType" type="GUID" line="24" static="1">
+    </method>
+    <method name="locales_addTranslation" type="void" dispatch_id="10" virtual="1" dispatch="1" line="8">
+      <param name="from" type="const char *"/>
+      <param name="to" type="const char *"/>
+    </method>
+    <method name="locales_getTranslation" type="const char *" dispatch_id="20" virtual="1" dispatch="1" line="16">
+      <param name="from" type="const char *"/>
+    </method>
+    <method name="locales_getNumEntries" type="int" dispatch_id="30" virtual="1" dispatch="1" line="27">
+    </method>
+    <method name="locales_enumEntry" type="const char *" dispatch_id="40" virtual="1" dispatch="1" line="31">
+      <param name="n" type="int"/>
+    </method>
+    <method name="locales_getBindFromAction" type="const char *" dispatch_id="50" line="33" dispatch="1">
+      <param name="action" type="int"/>
+    </method>
+    <method name="locales_registerAcceleratorSection" type="void" dispatch_id="60" line="34" dispatch="1">
+      <param name="name" type="const char *"/>
+      <param name="wnd" type="RootWnd *"/>
+      <param name="global" type="int" default="0"/>
+    </method>
+    <data  name="m_LocaleMap" type="NODISPATCH stringMap" line="37" scope="private">
+    </data>
+  </class>
+</xhd>

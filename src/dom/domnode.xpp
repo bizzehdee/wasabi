@@ -1,0 +1,3 @@
+<xpp precompfile="precomp.h">
+    <class name="DomNode" file="domnode.xhd" />
+</xpp>

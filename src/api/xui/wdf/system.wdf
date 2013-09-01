@@ -1,0 +1,6 @@
+<WDF:Fragment>
+
+  <include file="bindings.inc"/>
+  <include file="images.inc"/>
+
+<WDF:Fragment>

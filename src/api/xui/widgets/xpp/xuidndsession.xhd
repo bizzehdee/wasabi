@@ -1,0 +1,74 @@
+<xhd>
+  <class name="XUIDndSession"
+         implementation="XUIDndSession"
+         class_header="..\..\xuidndsession.h"
+         class_module="..\..\xuidndsession.cpp"
+         xhd_factories="SourceSink;JSScriptable"
+         SourceSink_h="../sourcesink/XUIDndSessionEventSource.h"
+         SourceSink_cpp="../sourcesink/XUIDndSessionEventSource.cpp"
+         SourceSink_h2="../sourcesink/XUIDndSessionEventSink.h"
+         JSScriptable_h="../js/JSXUIDndSession.h"
+         JSScriptable_cpp="../js/JSXUIDndSession.cpp"
+         guid_jsScriptable="{FD185375-8D2A-4C3A-8F88-418426A664AC}">
+    <method name="XUIDndSession" line="9">
+      <param name="dragSource" type="XUIObject *"/>
+    </method>
+    <method name="~XUIDndSession" virtual="1" line="12">
+    </method>
+    <method name="acceptDrop" type="void" scriptable="1" line="15">
+    </method>
+    <method name="dropAccepted" type="bool" scriptable="1" line="19">
+    </method>
+    <method name="getNumDragTypes" type="int" scriptable="1" line="46">
+    </method>
+    <method name="enumDragType" type="const char *" scriptable="1" line="54">
+      <param name="n" type="int"/>
+    </method>
+    <method name="getNumDragObjects" type="int" scriptable="1" line="62">
+      <param name="type" type="const char *"/>
+    </method>
+    <method name="enumDragObject" type="void *" scriptable="1" line="72">
+      <param name="type" type="const char *"/>
+      <param name="n" type="int"/>
+    </method>
+    <method name="hasDragType" type="bool" scriptable="1" line="82">
+      <param name="type" type="const char *"/>
+    </method>
+    <method name="getDropTarget" type="XUIObject *" scriptable="1" line="23">
+    </method>
+    <method name="onDragEnter" type="void" line="26" scriptable="1" isevent="1">
+      <param name="target" type="XUIObject *"/>
+    </method>
+    <method name="onDragLeave" type="void" line="27" scriptable="1" isevent="1">
+      <param name="target" type="XUIObject *"/>
+    </method>
+    <method name="onDragOver" type="void" line="28" scriptable="1" isevent="1">
+      <param name="target" type="XUIObject *"/>
+      <param name="x" type="int"/>
+      <param name="y" type="int"/>
+    </method>
+    <method name="onDragDrop" type="void" line="29" scriptable="1" isevent="1">
+      <param name="target" type="XUIObject *"/>
+      <param name="x" type="int"/>
+      <param name="y" type="int"/>
+    </method>
+    <method name="addDragObject" type="void" scriptable="1" line="42">
+      <param name="dragType" type="const char *"/>
+      <param name="dragObject" type="void *"/>
+    </method>
+    <method name="setDropTarget" type="void" line="30">
+      <param name="target" type="XUIObject *"/>
+    </method>
+    <method name="setDragSource" type="void" line="34">
+      <param name="dragsource" type="XUIObject *"/>
+    </method>
+    <method name="resetAcceptDrop" type="void" line="38">
+    </method>
+    <data  name="m_canDrop" type="bool" line="39">
+    </data>
+    <data  name="m_dropTarget" type="XUIObject *" line="40">
+    </data>
+    <data  name="m_dragSource" type="XUIObject *" line="41">
+    </data>
+  </class>
+</xhd>

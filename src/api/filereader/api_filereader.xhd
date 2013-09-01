@@ -1,0 +1,56 @@
+<xhd>
+  <class name="api_filereader"
+         implementation="api_filereaderI"
+         class_header="api_filereaderI.h"
+         class_module="api_filereaderI.cpp"
+         xhd_factories="Interface"
+         dispatchable="1"
+         dispatchable_header="api_filereaderx.h"
+         dispatchable_module="api_filereaderx.cpp"
+         interface_header="api_filereader.h"
+         interface_module="api_filereader.cpp">
+    <method name="api_filereaderI" nodispatch="1" line="8">
+    </method>
+    <method name="~api_filereaderI" virtual="1" nodispatch="1" line="12">
+    </method>
+    <method name="getServiceName" type="const char *" line="31" static="1">
+    </method>
+    <method name="getServiceType" type="GUID" line="32" static="1">
+    </method>
+    <method name="fileCanOpen" type="int" dispatch_id="10" dispatch="1" line="16">
+      <param name="filename" type="const char *"/>
+      <param name="mode" type="int"/>
+    </method>
+    <method name="fileOpen" type="void *" dispatch_id="20" dispatch="1" line="22">
+      <param name="filename" type="const char *"/>
+      <param name="mode" type="int"/>
+    </method>
+    <method name="fileClose" type="void" dispatch_id="30" dispatch="1" line="26">
+      <param name="file" type="void *"/>
+    </method>
+    <method name="fileRead" type="int" dispatch_id="40" dispatch="1" line="30">
+      <param name="file" type="void *"/>
+      <param name="buf" type="char *"/>
+      <param name="len" type="int"/>
+    </method>
+    <method name="fileWrite" type="int" dispatch_id="50" dispatch="1" line="34">
+      <param name="file" type="void *"/>
+      <param name="buf" type="char *"/>
+      <param name="len" type="int"/>
+    </method>
+    <method name="fileCanSeek" type="int" dispatch_id="60" dispatch="1" line="38">
+      <param name="file" type="void *"/>
+    </method>
+    <method name="fileSeek" type="int" dispatch_id="70" line="42" dispatch="1">
+      <param name="file" type="void *"/>
+      <param name="start" type="int"/>
+      <param name="dist" type="int"/>
+    </method>
+    <method name="fileExists" type="int" dispatch_id="80" dispatch="1" line="46">
+      <param name="filename" type="const char *"/>
+    </method>
+    <method name="fileIsDirectory" type="int" dispatch_id="90" dispatch="1" line="50">
+      <param name="filename" type="const char *"/>
+    </method>
+  </class>
+</xhd>

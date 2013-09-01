@@ -1,0 +1,153 @@
+<xhd>
+  <class name="api_js"
+         implementation="api_jsI"
+         class_module="api_jsI.cpp"
+         class_header="api_jsI.h"
+         dispatchable="1"
+         xhd_factories="Interface"
+         interface_header="api_js.h"
+         interface_module="api_js.cpp"
+         dispatchable_header="api_jsX.h"
+         dispatchable_module="api_jsX.cpp">
+    <method name="api_jsI" line="28" nodispatch="1">
+    </method>
+    <method name="~api_jsI" line="29" virtual="1" nodispatch="1">
+    </method>
+    <method name="getServiceName" type="const char *" line="31" static="1">
+    </method>
+    <method name="getServiceType" type="GUID" line="32" static="1">
+    </method>
+    <method name="createNewContext" type="JSContext *" dispatch_id="100" line="34" dispatch="1">
+    </method>
+    <method name="enumContext" type="JSContext *" dispatch_id="110" line="35" dispatch="1">
+      <param name="n" type="int"/>
+    </method>
+    <method name="deleteContext" type="int" dispatch_id="120" line="36" dispatch="1">
+      <param name="n" type="int"/>
+    </method>
+    <method name="deleteContext" type="int" dispatch_id="130" line="37" dispatch="1">
+      <param name="ctx" type="JSContext *"/>
+    </method>
+    <method name="getMainContext" type="JSContext *" dispatch_id="170" line="38" dispatch="1">
+    </method>
+    <method name="collectGarbage" type="void" dispatch_id="200" line="39" dispatch="1">
+      <param name="ctx" type="JSContext *"/>
+    </method>
+    <method name="createNewObject" type="JSObject *" dispatch_id="140" line="41" dispatch="1">
+      <param name="cx" type="JSContext *"/>
+      <param name="cls" type="JSClass *"/>
+      <param name="parent" type="JSObject *" default="NULL"/>
+    </method>
+    <method name="enumObject" type="JSObject *" dispatch_id="150" line="42" dispatch="1">
+      <param name="n" type="int"/>
+    </method>
+    <method name="getGlobalObject" type="JSObject *" dispatch_id="180" line="43" dispatch="1">
+    </method>
+    <method name="assignFunctions" type="void" dispatch_id="160" line="45" dispatch="1">
+      <param name="cx" type="JSContext *"/>
+      <param name="classobj" type="JSObject *"/>
+      <param name="spec" type="JSFunctionSpec *"/>
+    </method>
+    <method name="compileScript" type="JSScript *" dispatch_id="1000" line="47" dispatch="1">
+      <param name="cx" type="JSContext *"/>
+      <param name="obj" type="JSObject *"/>
+      <param name="filename" type="const char *"/>
+    </method>
+    <method name="compileScript" type="JSScript *" dispatch_id="1001" line="48" dispatch="1">
+      <param name="cx" type="JSContext *"/>
+      <param name="obj" type="JSObject *"/>
+      <param name="bytes" type="const char *"/>
+      <param name="len" type="long"/>
+      <param name="filename" type="const char *" default="0"/>
+    </method>
+    <method name="createScriptObject" type="JSObject *" dispatch_id="1010" line="49" dispatch="1">
+      <param name="cx" type="JSContext *"/>
+      <param name="script" type="JSScript *"/>
+    </method>
+    <method name="createNamedRoot" type="void" dispatch_id="1020" line="50" dispatch="1">
+      <param name="cx" type="JSContext *"/>
+      <param name="scriptobject" type="JSObject *"/>
+      <param name="name" type="const char *"/>
+    </method>
+    <method name="deleteNamedRoot" type="void" dispatch_id="1030" line="51" dispatch="1">
+      <param name="cx" type="JSContext *"/>
+      <param name="scriptobject" type="JSObject *"/>
+    </method>
+    <method name="executeScript" type="bool" dispatch_id="1500" line="53" dispatch="1">
+      <param name="cx" type="JSContext *"/>
+      <param name="script" type="JSScript *"/>
+      <param name="rval" type="jsval *"/>
+    </method>
+    <method name="executeFunction" type="bool" dispatch_id="1510" line="54" dispatch="1">
+      <param name="cx" type="JSContext *"/>
+      <param name="script" type="JSObject *"/>
+      <param name="name" type="const char *"/>
+      <param name="argn" type="int"/>
+      <param name="args" type="jsval *"/>
+      <param name="rval" type="jsval *"/>
+    </method>
+    <method name="evalScript" type="bool" dispatch_id="1520" line="55" dispatch="1">
+      <param name="cx" type="JSContext *"/>
+      <param name="obj" type="JSObject *"/>
+      <param name="bytes" type="const char *"/>
+      <param name="len" type="long"/>
+      <param name="retval" type="jsval *"/>
+      <param name="filename" type="const char *" default="0"/>
+    </method>
+    <method name="jsvalToInt" type="int" dispatch_id="2000" line="57" dispatch="1">
+      <param name="cx" type="JSContext *"/>
+      <param name="v" type="jsval *"/>
+    </method>
+    <method name="jsvalToDouble" type="double" dispatch_id="2010" line="58" dispatch="1">
+      <param name="cx" type="JSContext *"/>
+      <param name="v" type="jsval *"/>
+    </method>
+    <method name="jsvalToString" type="const char *" dispatch_id="2020" line="59" dispatch="1">
+      <param name="cx" type="JSContext *"/>
+      <param name="v" type="jsval *"/>
+    </method>
+    <method name="jsvalToBool" type="bool" dispatch_id="2030" line="60" dispatch="1">
+      <param name="cx" type="JSContext *"/>
+      <param name="v" type="jsval *"/>
+    </method>
+    <method name="jsvalToObject" type="void" dispatch_id="2040" line="61" dispatch="1">
+      <param name="cx" type="JSContext *"/>
+      <param name="v" type="jsval *"/>
+      <param name="obj" type="JSObject **"/>
+    </method>
+    <method name="intToJSval" type="jsval" dispatch_id="2500" line="63" dispatch="1">
+      <param name="cx" type="JSContext *"/>
+      <param name="v" type="int"/>
+    </method>
+    <method name="doubleToJSval" type="jsval" dispatch_id="2510" line="64" dispatch="1">
+      <param name="cx" type="JSContext *"/>
+      <param name="v" type="double"/>
+    </method>
+    <method name="stringToJSval" type="jsval" dispatch_id="2520" line="65" dispatch="1">
+      <param name="cx" type="JSContext *"/>
+      <param name="v" type="const char *"/>
+    </method>
+    <method name="boolToJSval" type="jsval" dispatch_id="2530" line="66" dispatch="1">
+      <param name="cx" type="JSContext *"/>
+      <param name="v" type="bool"/>
+    </method>
+    <method name="objectToJSval" type="jsval" dispatch_id="2540" line="67" dispatch="1">
+      <param name="cx" type="JSContext *"/>
+      <param name="obj" type="JSObject *"/>
+    </method>
+    <method name="registerScriptExtention" type="scriptExtentionBase *" dispatch_id="3000" line="69" dispatch="1">
+      <param name="ext" type="scriptExtentionBase *"/>
+      <param name="parent" type="JSObject *" default="NULL"/>
+    </method>
+    <data  name="rt" type="JSRuntime *" line="72" scope="private">
+    </data>
+    <data  name="ctxs" type="PtrList %3C JSContext %3E" line="73" scope="private">
+    </data>
+    <data  name="globalObj" type="JSObject *" line="74" scope="private">
+    </data>
+    <data  name="objs" type="PtrList %3C JSObject %3E" line="75" scope="private">
+    </data>
+    <data  name="exts" type="PtrList %3C scriptExtentionBase %3E" line="76" scope="private">
+    </data>
+  </class>
+</xhd>

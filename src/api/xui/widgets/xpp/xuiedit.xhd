@@ -1,0 +1,40 @@
+<xhd>
+  <class name="XUIEdit"
+         implementation="XUIEdit"
+         class_header="..\xuiedit.h"
+         class_module="..\xuiedit.cpp"
+         xhd_factories="SourceSink;JSScriptable"
+         SourceSink_h="../sourcesink/XUIEditEventSource.h"
+         SourceSink_cpp="../sourcesink/XUIEditEventSource.cpp"
+         JSScriptable_h="../js/JSXUIEdit.h"
+         JSScriptable_cpp="../js/JSXUIEdit.cpp"
+         SourceSink_h2="../sourcesink/XUIEditEventSink.h"
+         guid_jsScriptable="{094F3007-5E48-4754-9DDB-DA7D57C4870C}">
+    <method name="XUIEdit" line="30">
+    </method>
+    <method name="~XUIEdit" virtual="1" line="35">
+    </method>
+    <method name="onAttributeChanged" type="void" virtual="1" line="44">
+      <param name="attributeName" type="const char *"/>
+      <param name="attributeValue" type="const char *"/>
+    </method>
+    <method name="selectAll" type="void" scriptable="1" line="81">
+    </method>
+    <method name="onSetWindow" type="void" virtual="1" line="38">
+    </method>
+    <method name="onEdit" type="void" scriptable="1" isevent="1" line="85">
+      <param name="value" type="const char *" default="NULL"/>
+    </method>
+    <method name="onIdleEdit" type="void" scriptable="1" isevent="1" line="92">
+      <param name="value" type="const char *" default="NULL"/>
+    </method>
+    <method name="wantFocus" type="int" line="25" virtual="1">
+    </method>
+    <data  name="m_myvalueupdate" type="int" line="28" scope="private">
+    </data>
+    <data  name="m_edit" type="EditWnd *" line="29" scope="private">
+    </data>
+    <data  name="m_buffer" type="MemBlock %3C char %3E" line="30" scope="private">
+    </data>
+  </class>
+</xhd>

@@ -1,0 +1,3 @@
+<xpp precompfile="precomp.h">
+  <class name="api_memmgr" file="api_memmgri.xhd" />
+</xpp>

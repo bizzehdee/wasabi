@@ -1,0 +1,37 @@
+<xhd>
+  <class name="XUIGroup"
+         implementation="XUIGroup"
+         class_header="..\xuigroup.h"
+         class_module="..\xuigroup.cpp"
+         xhd_factories="SourceSink;JSScriptable"
+         SourceSink_h="../sourcesink/XUIGroupEventSource.h"
+         SourceSink_cpp="../sourcesink/XUIGroupEventSource.cpp"
+         SourceSink_h2="../sourcesink/XUIGroupEventSink.h"
+         JSScriptable_h="../js/JSXUIGroup.h"
+         JSScriptable_cpp="../js/JSXUIGroup.cpp"
+         guid_jsScriptable="{304035A0-E221-49E0-B607-3B0C99B2E77A}">
+    <method name="XUIGroup" line="13">
+    </method>
+    <method name="~XUIGroup" line="18" virtual="1">
+    </method>
+    <method name="onAttributeChanged" type="void" virtual="1" line="32">
+      <param name="attributeName" type="const char *"/>
+      <param name="attributeValue" type="const char *"/>
+    </method>
+    <method name="onDestroy" type="void" virtual="1" line="22">
+    </method>
+    <method name="onInit" type="void" virtual="1" line="42">
+    </method>
+    <method name="getContent" type="XUIObject *" line="22" scriptable="1">
+    </method>
+    <method name="setContent" type="void" scope="private" line="49">
+      <param name="id" type="const char *"/>
+    </method>
+    <method name="destroyContent" type="void" scope="private" line="83">
+    </method>
+    <data  name="m_content" type="XUIObject *" line="28" scope="private">
+    </data>
+    <data  name="m_inOnInit" type="int" line="29" scope="private">
+    </data>
+  </class>
+</xhd>

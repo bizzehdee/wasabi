@@ -1,0 +1,42 @@
+LIBRARY		"common"
+
+DESCRIPTION	'"""zlib data compression library"""'
+
+
+VERSION		1.12
+
+
+HEAPSIZE	1048576,8192
+
+EXPORTS
+    adler32                        @1
+    crc32                          @3
+    inflate                        @19
+    inflateEnd                     @20
+    inflateInit2_                  @21
+    inflateInit_                   @22
+    inflateReset                   @23
+    inflateSetDictionary           @24
+    inflateSync                    @25
+    uncompress                     @26
+    zlibVersion                    @27
+    zError                         @36
+    inflateSyncPoint               @37
+    get_crc_table                  @38
+
+	unzOpen                       @61
+	unzClose                      @62
+	unzGetGlobalInfo              @63
+	unzGetCurrentFileInfo         @64
+	unzGoToFirstFile              @65
+	unzGoToNextFile               @66
+	unzOpenCurrentFile            @67
+	unzReadCurrentFile            @68
+	unztell                       @70
+	unzeof                        @71
+	unzCloseCurrentFile           @72
+	unzGetGlobalComment           @73
+	unzStringFileNameCompare      @74
+	unzLocateFile                 @75
+	unzGetLocalExtrafield         @76
+	unzGetFileSize                @77

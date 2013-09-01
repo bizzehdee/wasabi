@@ -1,0 +1,56 @@
+<xhd>
+  <class name="JSGlobalObject"
+         implementation="JSGlobalObject"
+         class_header="..\jsglobalobject.h"
+         class_module="..\jsglobalobject.cpp"
+         xhd_factories="SourceSink;JSScriptable"
+         SourceSink_h="../sourcesink/JSGlobalObjectEventSource.h"
+         SourceSink_cpp="../sourcesink/JSGlobalObjectEventSource.cpp"
+         SourceSink_h2="../sourcesink/JSGlobalObjectEventSink.h"
+         JSScriptable_h="../js/JSJSGlobalObject.h"
+         JSScriptable_cpp="../js/JSJSGlobalObject.cpp"
+         guid_jsScriptable="{CAFE5D05-A4A4-495D-AC61-31AAB435FF76}">
+    <method name="JSGlobalObject" line="25">
+    </method>
+    <method name="~JSGlobalObject" virtual="1" line="88">
+    </method>
+    <method name="getSupportScript" type="const char *" line="11">
+    </method>
+    <method name="registerGlobalProperty" type="void" static="1" line="139">
+      <param name="name" type="const char *"/>
+      <param name="object" type="JSScriptable *"/>
+    </method>
+    <method name="onRegisterGlobal" type="void" virtual="1" line="143">
+      <param name="cx" type="JSContext *"/>
+    </method>
+    <method name="onDestroyRuntime" type="void" static="1" line="152">
+      <param name="cx" type="JSContext *"/>
+    </method>
+    <method name="printDebug" type="void" scriptable="1" line="92">
+      <param name="str" type="const char *"/>
+    </method>
+    <method name="alert" type="void" scriptable="1" line="96">
+      <param name="str" type="const char *"/>
+    </method>
+    <method name="createTimer" type="JSTimer *" scriptable="1" line="100">
+    </method>
+    <method name="deleteTimer" type="void" scriptable="1" line="106">
+      <param name="timer" type="JSTimer *"/>
+    </method>
+    <method name="isTimerValid" type="bool" scriptable="1" line="131">
+      <param name="timer" type="JSTimer *"/>
+    </method>
+    <method name="shutdown" type="void" scriptable="1" line="135">
+    </method>
+    <method name="timerclient_onDeferredCallback" type="int" virtual="1" line="118">
+      <param name="p1" type="int"/>
+      <param name="p2" type="int"/>
+    </method>
+    <data  name="m_supportScript" type="String" line="44">
+    </data>
+    <data  name="m_timers" type="PtrListInsertSortedByPtrVal %3C JSTimer %3E" line="45">
+    </data>
+    <data  name="s_global_props" type="PtrList %3C JSGlobalProperty %3E" line="150" static="1">
+    </data>
+  </class>
+</xhd>

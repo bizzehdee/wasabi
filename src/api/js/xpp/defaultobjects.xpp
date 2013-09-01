@@ -1,0 +1,4 @@
+<xpp precompfile="precomp.h">
+    <class name="JSGlobalObject"     file="jsglobalobject.xhd" />
+    <class name="JSTimer"            file="jstimer.xhd" />
+</xpp>

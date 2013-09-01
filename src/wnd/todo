@@ -1,0 +1,8 @@
+basewnd:
+	kill setTimer
+	make BaseWnd cons use init list
+
+refine painting:
+	virtual whatever to either paint on parent buf or into intermediate
+	buf
+	then can have all blend modes

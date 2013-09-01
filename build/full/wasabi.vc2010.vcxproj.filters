@@ -1,0 +1,1084 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4c58fc12-5548-48fe-888c-016e35638243}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Source Files\system">
+      <UniqueIdentifier>{0db542a1-a894-4531-ad74-5970ec47cc8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\system\file">
+      <UniqueIdentifier>{a0a2e16b-dd1a-4fe4-8a6e-7979af5c8434}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\system\memory">
+      <UniqueIdentifier>{ded2c4e5-0b09-4864-a6e7-93af01cd2bd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\system\utils">
+      <UniqueIdentifier>{93f94a78-c7f7-4092-b729-fd5c7b8cfbaf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\system\string">
+      <UniqueIdentifier>{db276789-2fef-4e50-b19c-22a8b994cb6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\system\platform">
+      <UniqueIdentifier>{e46a00d7-4dcf-44c9-8b3b-47e281d897ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\system\attrib">
+      <UniqueIdentifier>{96f04ddf-64f8-4302-a6c5-b83ead9be519}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\apis">
+      <UniqueIdentifier>{52a46399-0cc9-4591-8661-193e287997dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\apis\svc">
+      <UniqueIdentifier>{7a2c8e32-ddda-4dd3-99cb-b0f33589add1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\apis\svc\services">
+      <UniqueIdentifier>{00108f53-65c9-449b-95cd-8ae8dd9db3fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\apis\xml">
+      <UniqueIdentifier>{bdc9d524-4c73-4e3a-8c48-c83681814bdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\apis\xml\parser">
+      <UniqueIdentifier>{f2e98925-f216-4460-b48e-608d6bceddd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\apis\syscb">
+      <UniqueIdentifier>{5af848d8-d5b7-4c25-a1b5-475cd6f1847a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\apis\app">
+      <UniqueIdentifier>{09fc3d1e-b115-450f-b961-16c990b81b21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\apis\timer">
+      <UniqueIdentifier>{a3fb84a2-ebd3-4566-9f42-02413a872bde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\apis\memmgr">
+      <UniqueIdentifier>{715780e2-0040-4197-a627-31b344cc424f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\apis\config">
+      <UniqueIdentifier>{e12b1183-80c6-40ef-a6ef-658658629bd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\apis\font">
+      <UniqueIdentifier>{70acb3f3-3f04-4871-bf40-f6af14a03559}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\apis\locales">
+      <UniqueIdentifier>{f1e3cb7e-9432-4e88-8b48-aaa57914a0a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\apis\core">
+      <UniqueIdentifier>{b6b154ee-9486-4305-a1ef-5e6c7cf9cd7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\apis\wnd">
+      <UniqueIdentifier>{8df3d482-1d17-4308-a4cf-b48930d773bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\apis\filereader">
+      <UniqueIdentifier>{bcaee22a-fd82-403f-9763-d0008bfcb2a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\extern">
+      <UniqueIdentifier>{991f9174-2c40-40b8-a73b-46e30e5127d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\extern\zlib">
+      <UniqueIdentifier>{0336392b-fafa-497c-b62f-12501251e312}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\extern\jnetlib">
+      <UniqueIdentifier>{443b7421-7ffc-454d-8d0f-947ca2754417}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\img">
+      <UniqueIdentifier>{77848197-200b-49ab-93dd-edbc938a72c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\img\pngload">
+      <UniqueIdentifier>{77039191-cc9c-482a-a22e-42ca9b542e8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\img\pngload\pnglib">
+      <UniqueIdentifier>{4585f96c-495a-4246-9de8-fef21c08def3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\img\jpgload">
+      <UniqueIdentifier>{fb67ea91-e551-4d4c-8f0f-59afac623538}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\img\jpgload\jpgdlib">
+      <UniqueIdentifier>{462513ab-50db-4bd4-8608-b0c3f19cce9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\img\ppmload">
+      <UniqueIdentifier>{4c335a9a-ffe0-4768-91d5-a7be2645b84d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\draw">
+      <UniqueIdentifier>{8d1d0a38-df3e-46b6-8e05-4776e5f2f81f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\net">
+      <UniqueIdentifier>{d216e9e2-3700-4737-b04f-ea16c1cf4aaf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\parse">
+      <UniqueIdentifier>{a1917d89-82ee-4a07-954b-afc1acef619f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\wnd">
+      <UniqueIdentifier>{9761ccf6-96e1-4ec8-9d7e-bfb2dd882502}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\wnd\wnds">
+      <UniqueIdentifier>{882f6e94-710b-4b09-8372-9e0a6c388196}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\wnd\wnds\browser">
+      <UniqueIdentifier>{99a1d02c-6954-4e4f-94b6-3573c763f050}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\wnd\wnds\oswnds">
+      <UniqueIdentifier>{45104a5b-3788-4ad4-8c2e-bc91373f1afa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\wac">
+      <UniqueIdentifier>{cefc9e31-7e9a-4db9-9d2c-dbc3e78f2075}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{5a1d03b2-507a-42af-82e9-8ee982a226ac}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Header Files\apis">
+      <UniqueIdentifier>{8951cb9e-92e2-4b11-99f0-44b71ee464a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\draw">
+      <UniqueIdentifier>{f0c92030-35f5-4f4d-9084-7a7028413573}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\extern">
+      <UniqueIdentifier>{2f06f38c-cda2-4c20-8511-37f2e322cc9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\extern\jnetlib">
+      <UniqueIdentifier>{e5000b5c-8a1b-4137-aa89-b3b16e22182a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\extern\zlib">
+      <UniqueIdentifier>{82062353-4e36-4290-ac15-7520611cf408}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\img">
+      <UniqueIdentifier>{4136eab8-7a03-4699-a954-777b4838d8db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\net">
+      <UniqueIdentifier>{e107be2c-05b8-45a3-81c6-fafce9af0055}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\parse">
+      <UniqueIdentifier>{33376a8c-167a-423d-829b-46eed393b0e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\system">
+      <UniqueIdentifier>{bce63a97-0050-46bd-b335-727d2ae90ead}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\wac">
+      <UniqueIdentifier>{57b20328-a379-4c39-84ad-1fa48f69110b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\wnd">
+      <UniqueIdentifier>{1867b2cd-5bfe-429b-87d7-42aec4a00bb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\system\memory">
+      <UniqueIdentifier>{bffdc406-07e4-4a6d-a7a5-ec256563aa9a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\api\apiinit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\precomp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\assert.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\Buffer.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\critsec.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\depend.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\guid.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\nsGUID.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\rect.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\redir.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\std.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\std_cpu.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\std_file.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\std_math.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\std_mem.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\std_path.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\std_rand.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\std_string.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\std_wnd.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\textfeed.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\thread.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\file\filename.cpp">
+      <Filter>Source Files\system\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\file\readdir.cpp">
+      <Filter>Source Files\system\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\file\recursedir.cpp">
+      <Filter>Source Files\system\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\file\savefile.cpp">
+      <Filter>Source Files\system\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\file\wildcharsenum.cpp">
+      <Filter>Source Files\system\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\foreach.cpp">
+      <Filter>Source Files\system\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\freelist.cpp">
+      <Filter>Source Files\system\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\loadlib.cpp">
+      <Filter>Source Files\system\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\memblock.cpp">
+      <Filter>Source Files\system\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\ptrlist.cpp">
+      <Filter>Source Files\system\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\stack.cpp">
+      <Filter>Source Files\system\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\util\profiler.cpp">
+      <Filter>Source Files\system\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\util\timefmt.cpp">
+      <Filter>Source Files\system\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\string\bigstring.cpp">
+      <Filter>Source Files\system\string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\string\encodedstr.cpp">
+      <Filter>Source Files\system\string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\string\playstring.cpp">
+      <Filter>Source Files\system\string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\string\redirstr.cpp">
+      <Filter>Source Files\system\string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\string\string.cpp">
+      <Filter>Source Files\system\string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\string\stringMap.cpp">
+      <Filter>Source Files\system\string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\string\stringPair.cpp">
+      <Filter>Source Files\system\string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\string\stringpool.cpp">
+      <Filter>Source Files\system\string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\string\stringtable.cpp">
+      <Filter>Source Files\system\string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\string\url.cpp">
+      <Filter>Source Files\system\string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\string\utf8.cpp">
+      <Filter>Source Files\system\string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\platform\linux\linux.cpp">
+      <Filter>Source Files\system\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\platform\platform.cpp">
+      <Filter>Source Files\system\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\attrib\attrcolor.cpp">
+      <Filter>Source Files\system\attrib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\attrib\attribute.cpp">
+      <Filter>Source Files\system\attrib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\attrib\attrstr.cpp">
+      <Filter>Source Files\system\attrib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\attrib\cfgitemi.cpp">
+      <Filter>Source Files\system\attrib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\service\api_service.cpp">
+      <Filter>Source Files\apis\svc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\service\api_servicei.cpp">
+      <Filter>Source Files\apis\svc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\service\api_servicex.cpp">
+      <Filter>Source Files\apis\svc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\syscb\callbacks\consolecb.cpp">
+      <Filter>Source Files\apis\svc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\service\servicei.cpp">
+      <Filter>Source Files\apis\svc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\service\svc_enum.cpp">
+      <Filter>Source Files\apis\svc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\service\svccache.cpp">
+      <Filter>Source Files\apis\svc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\service\svcenum.cpp">
+      <Filter>Source Files\apis\svc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\service\svcenumbyguid.cpp">
+      <Filter>Source Files\apis\svc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\service\svcenumt.cpp">
+      <Filter>Source Files\apis\svc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\service\svcmgr.cpp">
+      <Filter>Source Files\apis\svc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\service\waservicefactory.cpp">
+      <Filter>Source Files\apis\svc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\service\waservicefactorybase.cpp">
+      <Filter>Source Files\apis\svc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\service\waservicefactoryi.cpp">
+      <Filter>Source Files\apis\svc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\service\waservicefactoryt.cpp">
+      <Filter>Source Files\apis\svc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\service\waservicefactorytsingle.cpp">
+      <Filter>Source Files\apis\svc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\service\waservicefactoryx.cpp">
+      <Filter>Source Files\apis\svc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\service\svcs\svc_action.cpp">
+      <Filter>Source Files\apis\svc\services</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\service\svcs\svc_coreadmin.cpp">
+      <Filter>Source Files\apis\svc\services</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\service\svcs\svc_fileread.cpp">
+      <Filter>Source Files\apis\svc\services</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\service\svcs\svc_mediaconverter.cpp">
+      <Filter>Source Files\apis\svc\services</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\service\svcs\svc_mediacore.cpp">
+      <Filter>Source Files\apis\svc\services</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\service\svcs\svc_textfeed.cpp">
+      <Filter>Source Files\apis\svc\services</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\xml\api_xml.cpp">
+      <Filter>Source Files\apis\xml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\xml\xmlapi.cpp">
+      <Filter>Source Files\apis\xml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\xml\xmlparams.cpp">
+      <Filter>Source Files\apis\xml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\xml\xmlparamsi.cpp">
+      <Filter>Source Files\apis\xml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\xml\xmlparamsx.cpp">
+      <Filter>Source Files\apis\xml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\xml\xmlreader.cpp">
+      <Filter>Source Files\apis\xml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\xml\xmlwrite.cpp">
+      <Filter>Source Files\apis\xml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\xml\parser\hashtable.c">
+      <Filter>Source Files\apis\xml\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\xml\parser\simap.cpp">
+      <Filter>Source Files\apis\xml\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\xml\parser\xmlparser.c">
+      <Filter>Source Files\apis\xml\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\xml\parser\xmlrole.c">
+      <Filter>Source Files\apis\xml\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\xml\parser\xmltok.c">
+      <Filter>Source Files\apis\xml\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\syscb\api_syscb.cpp">
+      <Filter>Source Files\apis\syscb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\syscb\api_syscbi.cpp">
+      <Filter>Source Files\apis\syscb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\syscb\api_syscbx.cpp">
+      <Filter>Source Files\apis\syscb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\syscb\cbmgr.cpp">
+      <Filter>Source Files\apis\syscb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\syscb\callbacks\syscb.cpp">
+      <Filter>Source Files\apis\syscb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\syscb\callbacks\syscbi.cpp">
+      <Filter>Source Files\apis\syscb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\syscb\callbacks\syscbx.cpp">
+      <Filter>Source Files\apis\syscb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\application\api_application.cpp">
+      <Filter>Source Files\apis\app</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\application\api_applicationi.cpp">
+      <Filter>Source Files\apis\app</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\application\api_applicationx.cpp">
+      <Filter>Source Files\apis\app</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfc\util\inifile.cpp">
+      <Filter>Source Files\apis\app</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\application\ipcs.cpp">
+      <Filter>Source Files\apis\app</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\application\pathmgr.cpp">
+      <Filter>Source Files\apis\app</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\application\version.cpp">
+      <Filter>Source Files\apis\app</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\timer\api_timer.cpp">
+      <Filter>Source Files\apis\timer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\timer\timerapi.cpp">
+      <Filter>Source Files\apis\timer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\timer\timerclient.cpp">
+      <Filter>Source Files\apis\timer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\timer\timermul.cpp">
+      <Filter>Source Files\apis\timer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\timer\tmultiplex.cpp">
+      <Filter>Source Files\apis\timer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\memmgr\api_memmgr.cpp">
+      <Filter>Source Files\apis\memmgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\memmgr\api_memmgri.cpp">
+      <Filter>Source Files\apis\memmgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\memmgr\api_memmgrx.cpp">
+      <Filter>Source Files\apis\memmgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\config\api_config.cpp">
+      <Filter>Source Files\apis\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\config\api_configi.cpp">
+      <Filter>Source Files\apis\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\config\api_configx.cpp">
+      <Filter>Source Files\apis\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\config\cfglist.cpp">
+      <Filter>Source Files\apis\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\config\config.cpp">
+      <Filter>Source Files\apis\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\font\api_font.cpp">
+      <Filter>Source Files\apis\font</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\font\fontapi.cpp">
+      <Filter>Source Files\apis\font</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\service\svcs\svc_font.cpp">
+      <Filter>Source Files\apis\font</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\font\win32\truetypefont_win32.cpp">
+      <Filter>Source Files\apis\font</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\locales\api_locales.cpp">
+      <Filter>Source Files\apis\locales</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\locales\api_localesI.cpp">
+      <Filter>Source Files\apis\locales</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\locales\api_localesX.cpp">
+      <Filter>Source Files\apis\locales</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\core\api_core.cpp">
+      <Filter>Source Files\apis\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\core\chunklist.cpp">
+      <Filter>Source Files\apis\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\core\core_api.cpp">
+      <Filter>Source Files\apis\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\core\corecb.cpp">
+      <Filter>Source Files\apis\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\core\corehandle.cpp">
+      <Filter>Source Files\apis\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\core\sequence.cpp">
+      <Filter>Source Files\apis\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\wnd\api_wnd.cpp">
+      <Filter>Source Files\apis\wnd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\wnd\wndapi.cpp">
+      <Filter>Source Files\apis\wnd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\filereader\api_filereader.cpp">
+      <Filter>Source Files\apis\filereader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\filereader\api_filereaderI.cpp">
+      <Filter>Source Files\apis\filereader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\filereader\api_filereaderX.cpp">
+      <Filter>Source Files\apis\filereader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\zlib\ADLER32.C">
+      <Filter>Source Files\extern\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\zlib\COMPRESS.C">
+      <Filter>Source Files\extern\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\zlib\CRC32.C">
+      <Filter>Source Files\extern\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\zlib\DEFLATE.C">
+      <Filter>Source Files\extern\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\zlib\GZIO.C">
+      <Filter>Source Files\extern\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\zlib\INFBLOCK.C">
+      <Filter>Source Files\extern\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\zlib\INFCODES.C">
+      <Filter>Source Files\extern\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\zlib\INFFAST.C">
+      <Filter>Source Files\extern\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\zlib\INFLATE.C">
+      <Filter>Source Files\extern\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\zlib\INFTREES.C">
+      <Filter>Source Files\extern\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\zlib\INFUTIL.C">
+      <Filter>Source Files\extern\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\zlib\TREES.C">
+      <Filter>Source Files\extern\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\zlib\UNCOMPR.C">
+      <Filter>Source Files\extern\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\zlib\UNZIP.C">
+      <Filter>Source Files\extern\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\zlib\ZUTIL.C">
+      <Filter>Source Files\extern\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\net\jnetlib\asyncdns.cpp">
+      <Filter>Source Files\extern\jnetlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\net\jnetlib\connection.cpp">
+      <Filter>Source Files\extern\jnetlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\net\jnetlib\httpget.cpp">
+      <Filter>Source Files\extern\jnetlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\net\jnetlib\httpserv.cpp">
+      <Filter>Source Files\extern\jnetlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\net\jnetlib\listen.cpp">
+      <Filter>Source Files\extern\jnetlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\net\jnetlib\util.cpp">
+      <Filter>Source Files\extern\jnetlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\net\jnetlib\webserver.cpp">
+      <Filter>Source Files\extern\jnetlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\img\api_imgldr.cpp">
+      <Filter>Source Files\img</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\img\imgldr.cpp">
+      <Filter>Source Files\img</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\img\imgldrapi.cpp">
+      <Filter>Source Files\img</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\api\service\svcs\svc_imgload.cpp">
+      <Filter>Source Files\img</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\img\pngload\loader.cpp">
+      <Filter>Source Files\img\pngload</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\img\pngload\pngload.cpp">
+      <Filter>Source Files\img\pngload</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\img\pngload\pnglib\PNG.C">
+      <Filter>Source Files\img\pngload\pnglib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\img\pngload\pnglib\PNGERROR.C">
+      <Filter>Source Files\img\pngload\pnglib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\img\pngload\pnglib\PNGGET.C">
+      <Filter>Source Files\img\pngload\pnglib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\img\pngload\pnglib\PNGMEM.C">
+      <Filter>Source Files\img\pngload\pnglib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\img\pngload\pnglib\PNGREAD.C">
+      <Filter>Source Files\img\pngload\pnglib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\img\pngload\pnglib\PNGRIO.C">
+      <Filter>Source Files\img\pngload\pnglib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\img\pngload\pnglib\PNGRTRAN.C">
+      <Filter>Source Files\img\pngload\pnglib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\img\pngload\pnglib\PNGRUTIL.C">
+      <Filter>Source Files\img\pngload\pnglib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\img\pngload\pnglib\PNGSET.C">
+      <Filter>Source Files\img\pngload\pnglib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\img\pngload\pnglib\PNGTRANS.C">
+      <Filter>Source Files\img\pngload\pnglib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\img\pngload\pnglib\pngvcrd.c">
+      <Filter>Source Files\img\pngload\pnglib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\img\jpgload\jpgload.cpp">
+      <Filter>Source Files\img\jpgload</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\img\jpgload\loader_jpg.cpp">
+      <Filter>Source Files\img\jpgload</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\img\jpgload\jpgdlib\H2v2.cpp">
+      <Filter>Source Files\img\jpgload\jpgdlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\img\jpgload\jpgdlib\idct.cpp">
+      <Filter>Source Files\img\jpgload\jpgdlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\img\jpgload\jpgdlib\jidctfst.cpp">
+      <Filter>Source Files\img\jpgload\jpgdlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\img\jpgload\jpgdlib\jpegdecoder.cpp">
+      <Filter>Source Files\img\jpgload\jpgdlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\img\ppmload\loader_ppm.cpp">
+      <Filter>Source Files\img\ppmload</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\img\ppmload\ppmload.cpp">
+      <Filter>Source Files\img\ppmload</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\draw\bitmap.cpp">
+      <Filter>Source Files\draw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\draw\blending.cpp">
+      <Filter>Source Files\draw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\draw\contrast.cpp">
+      <Filter>Source Files\draw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\draw\convolve.cpp">
+      <Filter>Source Files\draw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\draw\drawpoly.cpp">
+      <Filter>Source Files\draw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\draw\floodfill.cpp">
+      <Filter>Source Files\draw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\draw\histo.cpp">
+      <Filter>Source Files\draw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\net\urlgrab.cpp">
+      <Filter>Source Files\net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\parse\hierarchyparser.cpp">
+      <Filter>Source Files\parse</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\parse\node.cpp">
+      <Filter>Source Files\parse</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\parse\paramparser.cpp">
+      <Filter>Source Files\parse</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\parse\pathparse.cpp">
+      <Filter>Source Files\parse</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\parse\urlparse.cpp">
+      <Filter>Source Files\parse</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\wnd\backbufferwnd.cpp">
+      <Filter>Source Files\wnd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\wnd\basewnd.cpp">
+      <Filter>Source Files\wnd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\wnd\bltcanvas.cpp">
+      <Filter>Source Files\wnd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\wnd\canvas.cpp">
+      <Filter>Source Files\wnd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\wnd\clickwnd.cpp">
+      <Filter>Source Files\wnd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\wnd\dockhostwnd.cpp">
+      <Filter>Source Files\wnd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\wnd\findobjectcb.cpp">
+      <Filter>Source Files\wnd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\wnd\labelwnd.cpp">
+      <Filter>Source Files\wnd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\wnd\popup.cpp">
+      <Filter>Source Files\wnd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\wnd\region.cpp">
+      <Filter>Source Files\wnd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\wnd\rootwnd.cpp">
+      <Filter>Source Files\wnd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\wnd\scbkgwnd.cpp">
+      <Filter>Source Files\wnd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\wnd\scrollbar.cpp">
+      <Filter>Source Files\wnd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\wnd\virtualwnd.cpp">
+      <Filter>Source Files\wnd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\wnd\wnds\blankwnd.cpp">
+      <Filter>Source Files\wnd\wnds</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\wnd\wnds\dockwnd.cpp">
+      <Filter>Source Files\wnd\wnds</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\wnd\wnds\framewnd.cpp">
+      <Filter>Source Files\wnd\wnds</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\wnd\wnds\listwnd.cpp">
+      <Filter>Source Files\wnd\wnds</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\wnd\wnds\browser\browserwnd.cpp">
+      <Filter>Source Files\wnd\wnds\browser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\wnd\wnds\browser\minibrowser.cpp">
+      <Filter>Source Files\wnd\wnds\browser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\wnd\wnds\browser\oswnd.cpp">
+      <Filter>Source Files\wnd\wnds\browser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\wnd\wnds\os\osdialog.cpp">
+      <Filter>Source Files\wnd\wnds\oswnds</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\wnd\wnds\os\osframewnd.cpp">
+      <Filter>Source Files\wnd\wnds\oswnds</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\wnd\wnds\os\osmdichildwnd.cpp">
+      <Filter>Source Files\wnd\wnds\oswnds</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\wnd\wnds\os\osmdiclientwnd.cpp">
+      <Filter>Source Files\wnd\wnds\oswnds</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\wnd\wnds\os\osmdiparentwnd.cpp">
+      <Filter>Source Files\wnd\wnds\oswnds</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\wnd\wnds\os\osstatusbarwnd.cpp">
+      <Filter>Source Files\wnd\wnds\oswnds</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\wac\ComponentManager.cpp">
+      <Filter>Source Files\wac</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\wac\waContainer.cpp">
+      <Filter>Source Files\wnd</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\bfc\textfeed.h">
+      <Filter>Source Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bfc\string\redirstr.h">
+      <Filter>Source Files\system\string</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bfc\string\stringMap.h">
+      <Filter>Source Files\system\string</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bfc\string\stringPair.h">
+      <Filter>Source Files\system\string</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\api\core\api_core.h">
+      <Filter>Source Files\apis\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\api\core\buttons.h">
+      <Filter>Source Files\apis\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\api\core\chunklist.h">
+      <Filter>Source Files\apis\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\api\core\core_api.h">
+      <Filter>Source Files\apis\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\api\core\corecb.h">
+      <Filter>Source Files\apis\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\api\core\corehandle.h">
+      <Filter>Source Files\apis\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\api\core\coremsg.h">
+      <Filter>Source Files\apis\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\api\core\coreservices.h">
+      <Filter>Source Files\apis\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\api\core\mediainfo.h">
+      <Filter>Source Files\apis\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\api\core\sequence.h">
+      <Filter>Source Files\apis\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\api\wnd\api_wnd.h">
+      <Filter>Source Files\apis\wnd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\api\wnd\wndapi.h">
+      <Filter>Source Files\apis\wnd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\draw\argb.h">
+      <Filter>Header Files\draw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\draw\argb32.h">
+      <Filter>Header Files\draw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\draw\bitmap.h">
+      <Filter>Header Files\draw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\draw\blending.h">
+      <Filter>Header Files\draw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\draw\contrast.h">
+      <Filter>Header Files\draw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\draw\convolve.h">
+      <Filter>Header Files\draw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\draw\drawpoly.h">
+      <Filter>Header Files\draw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\draw\floodfill.h">
+      <Filter>Header Files\draw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\draw\histo.h">
+      <Filter>Header Files\draw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\net\jnetlib\asyncdns.h">
+      <Filter>Header Files\extern\jnetlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\net\jnetlib\connection.h">
+      <Filter>Header Files\extern\jnetlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\net\jnetlib\httpget.h">
+      <Filter>Header Files\extern\jnetlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\net\jnetlib\httpserv.h">
+      <Filter>Header Files\extern\jnetlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\net\jnetlib\jnetlib.h">
+      <Filter>Header Files\extern\jnetlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\net\jnetlib\listen.h">
+      <Filter>Header Files\extern\jnetlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\net\jnetlib\netinc.h">
+      <Filter>Header Files\extern\jnetlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\net\jnetlib\util.h">
+      <Filter>Header Files\extern\jnetlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\net\jnetlib\webserver.h">
+      <Filter>Header Files\extern\jnetlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\zlib\crypt.h">
+      <Filter>Header Files\extern\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\zlib\DEFLATE.H">
+      <Filter>Header Files\extern\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\zlib\INFBLOCK.H">
+      <Filter>Header Files\extern\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\zlib\INFCODES.H">
+      <Filter>Header Files\extern\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\zlib\INFFAST.H">
+      <Filter>Header Files\extern\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\zlib\INFFIXED.H">
+      <Filter>Header Files\extern\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\zlib\INFTREES.H">
+      <Filter>Header Files\extern\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\zlib\INFUTIL.H">
+      <Filter>Header Files\extern\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\zlib\ioapi.h">
+      <Filter>Header Files\extern\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\zlib\TREES.H">
+      <Filter>Header Files\extern\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\zlib\UNZIP.H">
+      <Filter>Header Files\extern\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\zlib\ZCONF.H">
+      <Filter>Header Files\extern\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\zlib\zip.h">
+      <Filter>Header Files\extern\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\zlib\ZLIB.H">
+      <Filter>Header Files\extern\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\zlib\ZUTIL.H">
+      <Filter>Header Files\extern\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\wasabicfg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\wac\wac.h">
+      <Filter>Header Files\wac</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\wac\waContainer.h">
+      <Filter>Header Files\wac</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\net\urlgrab.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\wac\ComponentManager.h">
+      <Filter>Header Files\wac</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bfc\assert.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bfc\Buffer.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bfc\common.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bfc\compare.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bfc\critsec.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bfc\depend.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bfc\depview.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bfc\dispatch.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bfc\guid.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bfc\nsguid.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bfc\std.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bfc\std_cpu.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bfc\std_file.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bfc\std_math.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bfc\std_mem.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bfc\std_path.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bfc\std_rand.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bfc\std_string.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bfc\std_wnd.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bfc\thread.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bfc\foreach.h">
+      <Filter>Header Files\system\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bfc\freelist.h">
+      <Filter>Header Files\system\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bfc\loadlib.h">
+      <Filter>Header Files\system\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bfc\memblock.h">
+      <Filter>Header Files\system\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bfc\ptrlist.h">
+      <Filter>Header Files\system\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bfc\stack.h">
+      <Filter>Header Files\system\memory</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuildStep Include="..\..\src\bfc\platform\guid.h">
+      <Filter>Source Files\system\platform</Filter>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\..\src\bfc\platform\linux.h">
+      <Filter>Source Files\system\platform</Filter>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\..\src\bfc\platform\platform.h">
+      <Filter>Source Files\system\platform</Filter>
+    </CustomBuildStep>
+    <CustomBuildStep Include="..\..\src\bfc\platform\win32.h">
+      <Filter>Source Files\system\platform</Filter>
+    </CustomBuildStep>
+  </ItemGroup>
+</Project>

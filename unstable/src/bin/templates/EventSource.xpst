@@ -1,0 +1,238 @@
+<XPP:StandaloneTemplate classname="*_EventSource" inherit="parallel" desc="Source/Sink Infrastructure" >
+
+<include file="std/std.xph"/>
+
+<!-- ################################################################### -->
+<!-- eventsource h file -->
+<!-- ################################################################### -->
+
+<module id="h" filename="*_EventSource.h">
+<call id="eventsourceinit"/>
+// ----------------------------------------------------------------------------<br/>
+// Generated from EventSource.xpst -- DO NOT EDIT -- [<datetime/>]<br/>
+// ----------------------------------------------------------------------------<br/>
+<br/>
+
+<!-- compiler safeguards -->
+
+#ifndef __<class data="classlayer" ucase="1"/>_H<br/>
+#define __<class data="classlayer" ucase="1"/>_H<br/>
+<br/>
+#include %3Cbfc/sourcesink.h%3E<br/>
+<br/>
+
+<autoheader/>
+<br/>
+
+<!-- custom header codeblocks -->
+<call id="codeblocks" type="eventsource.header.h"/>
+
+extern GUID _EventSource_<class data="name"/>;<br/>
+<br/>
+
+class <class data="classlayer"/> : public EventSource<ob/><br/>
+protected:<br/>
+<indent>
+  <class data="classlayer"/>() { };<br/>
+  virtual ~<class data="classlayer"/>() { };<br/>
+</indent>
+<br/>
+public:<br/>
+<indent>
+  // Event triggers<br/>
+  <call id="std_class_methodcallback" proc="decl" type="script|event" typeand="1"/>
+</indent>
+<cb/>;<br/>
+
+<br/>
+<br/>
+
+<!-- custom header codeblocks -->
+<call id="codeblocks" type="eventsource.footer.h"/>
+
+
+#endif // __<class data="classlayer" ucase="1"/>_H<br/>
+
+</module>
+
+<!-- ################################################################### -->
+<!-- eventsource cpp file -->
+<!-- ################################################################### -->
+
+<module id="cpp" filename="*_EventSource.cpp">
+// ----------------------------------------------------------------------------<br/>
+// Generated from EventSource.xpst -- DO NOT EDIT -- [<datetime/>]<br/>
+// ----------------------------------------------------------------------------<br/>
+<stdafx/>
+<br/>
+#include "<class data="implementationheader"/>"<br/>
+#include "<class data="name"/>_EventSink.h"<br/>
+#include "<class data="classlayer"/>.h"<br/>
+<br/>
+
+#ifdef CASTTHIS<br/>
+#undef CASTTHIS<br/>
+#endif<br/>
+#define CASTTHIS (static_cast%3C<class data="name"/> *%3E(this))<br/>
+<br/>
+
+<!-- custom header codeblocks -->
+<call id="codeblocks" type="eventsource.header.cpp"/>
+
+// Event triggers<br/>
+<call id="std_class_methodcallback" proc="impl" type="script|event" typeand="1"/>
+
+<!-- custom header codeblocks -->
+<call id="codeblocks" type="eventsource.footer.cpp"/>
+
+</module>
+
+<!-- ################################################################### -->
+<!-- eventsink h file -->
+<!-- ################################################################### -->
+
+<module id="h2" filename="*_EventSink.h">
+// ----------------------------------------------------------------------------<br/>
+// Generated from EventSource.xpst -- DO NOT EDIT -- [<datetime/>]<br/>
+// ----------------------------------------------------------------------------<br/>
+
+#ifndef __<class data="name" ucase="1"/>_EVENTSINK_H<br/>
+#define __<class data="name" ucase="1"/>_EVENTSINK_H<br/>
+<br/>
+
+#include %3Cbfc/sourcesink.h%3E<br/>
+<br/>
+
+<autoheader/>
+<br/>
+
+class <class data="name"/>;<br/>
+<br/>
+
+// {<guid id="SourceSink"/>}<br/>
+static const GUID Event_<class data="name"/>_GUID = <br/>
+<cguid id="EventSource"/>;<br/>
+<br/>
+
+class <class data="name"/>_EventSink : public <get id="_sinkancestor"/>EventSink<ob/><br/>
+protected:<br/>
+<indent>
+  <class data="name"/>_EventSink() {}<br/>
+  virtual ~<class data="name"/>_EventSink() {}<br/>
+  <br/>
+</indent>
+
+<if text="$_numevents" match="0" not="1">
+  public:<br/>
+  <indent>
+    enum<ob/><br/>
+    <indent>
+      <call id="std_class_methodcallback" proc="enum" type="script|event" typeand="1"/>
+    </indent>
+    <cb/>;<br/>
+    <br/>
+    // Default event handlers<br/>
+    <call id="std_class_methodcallback" proc="decl2" type="script|event" typeand="1"/>
+    <br/>
+    virtual int eventsink_eventDispatch(EventSource *item, GUID event_class, int msg, void **params=NULL, int nparam=0);<br/>
+  </indent>
+</if>
+
+<cb/>;<br/>
+<br/>
+
+#endif // __<class data="name" ucase="1"/>_EVENTSINK_H<br/>
+<br/>
+
+</module>
+
+<!-- ################################################################### -->
+<!-- eventsink cpp file -->
+<!-- ################################################################### -->
+
+<module id="cpp2" filename="*_EventSink.cpp">
+// ----------------------------------------------------------------------------<br/>
+// Generated from EventSource.xpst -- DO NOT EDIT -- [<datetime/>]<br/>
+// ----------------------------------------------------------------------------<br/>
+<stdafx/>
+#include "<class data="name"/>_EventSink.h"<br/>
+<br/>
+
+<if text="$_numevents" match="0" not="1">
+// -----------------------------------------------------------------------<br/>
+// Here we receive the event messages and get a chance to act on them before our ancestor does<br/>
+int <class data="name"/>_EventSink::eventsink_eventDispatch(EventSource *item, GUID event_class, int msg, void **params, int nparam)<ob/><br/>
+<indent>  
+  // Demux events<br/>
+  if (event_class == Event_<class data="name"/>_GUID)<ob/><br/>
+  <indent>
+    switch (msg)<ob/><br/>
+      <indent>
+        <call id="std_class_methodcallback" proc="demux" type="script|event" typeand="1"/>
+      </indent>
+    <cb/><br/>
+  </indent>
+  <cb/><br/>
+  // Honor our ancestors' callbacks and let them know about this event<br/>
+  return <get id="_sinkancestor"/>EventSink::eventsink_eventDispatch(item, event_class, msg, params, nparam);<br/>
+</indent>
+<cb/><br/>
+<br/>
+</if>
+
+</module>
+
+<!-- ################################################################### -->
+
+<proc id="eventsourceinit">
+  <set id="_sinkancestor"><pget id="SourceSinkAncestor"/></set>
+  <if text="$_sinkancestor" match="" not="1"><set id="_sinkancestor" value="$_sinkancestor._"/></if>
+  <set id="_numevents"><call id="std_class_getnumevents"/></set>
+</proc>
+
+<proc id="impl">
+  <method data="returntype"/> <class data="classlayer"/>::trigger_<method data="name" lclead="1"/>(<call id="std_method_paramlist"/>)<ob/><br/>
+  <indent>
+    if (!eventsource_onEvent(Event_<class data="name"/>_GUID, <class data="name"/>_EventSink::<method data="name" ucase="1"/>
+    <if object="method" isoftype="voidparam" not="1">
+      , <call id="std_method_paramlist" types="0"/>
+    </if>
+    ))<br/>
+    <indent>
+      CASTTHIS-><method data="name"/>(<call id="std_method_paramlist" types="0"/>);<br/>
+    </indent>
+  </indent>
+  <cb/><br/>
+  <br/>
+</proc>
+
+<proc id="demux">
+  case <method data="name" ucase="1"/>: if (<method data="name"/>(reinterpret_cast%3C<class data="name"/>%20*%3E(item)
+  <if object="method" isoftype="voidparam" not="1"> 
+    ,%20
+    <foreach objects="params">
+      <forcomma/>
+      *(<param data="type"/>*)params[<forindex/>]
+    </foreach>
+  </if>
+  )) return 1; break;<br/>
+</proc>
+
+<proc id="decl">
+  void trigger_<method data="name" lclead="1"/>(<call id="std_method_paramlist"/>);<br/>
+</proc>
+
+<proc id="enum">
+  <method data="name" ucase="1"/>%20=%20<method data="dispatch_id"/>,<br/>
+</proc>
+
+<proc id="decl2">
+  virtual int <method data="name"/>(<class data="name"/>%20*_object
+  <if object="method" isoftype="voidparam" not="1">
+    , <call id="std_method_paramlist"/>
+  </if>
+  ) { return 0; }<br/>
+</proc>
+
+</XPP:StandaloneTemplate>
+

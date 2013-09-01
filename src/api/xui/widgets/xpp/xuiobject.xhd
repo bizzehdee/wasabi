@@ -1,0 +1,472 @@
+<xhd>
+  <class name="XUIObject"
+         implementation="XUIObject"
+         class_header="..\xuiobject.h"
+         class_module="..\xuiobject.cpp"
+         xhd_factories="SourceSink;JSScriptable"
+         jsnoevent="false"
+         SourceSink_h="../sourcesink/XUIObjectEventSource.h"
+         SourceSink_cpp="../sourcesink/XUIObjectEventSource.cpp"
+         SourceSink_h2="../sourcesink/XUIObjectEventSink.h"
+         JSScriptable_h="../js/JSXUIObject.h"
+         JSScriptable_cpp="../js/JSXUIObject.cpp"
+         guid_jsScriptable="{A9DE5D3D-883F-423A-BF3A-36C81007B901}">
+    <method name="XUIObject" line="80">
+    </method>
+    <method name="~XUIObject" virtual="1" line="115">
+    </method>
+    <method name="getOwnerService" type="svc_xuiObject *" line="39">
+    </method>
+    <method name="setOwnerService" type="void" line="40">
+      <param name="svc" type="svc_xuiObject *"/>
+    </method>
+    <method name="getElementType" type="int" line="41" virtual="1">
+    </method>
+    <method name="setBaseWnd" type="void" line="44">
+      <param name="w" type="BaseWnd *"/>
+    </method>
+    <method name="getRootWnd" type="RootWnd *" line="46">
+    </method>
+    <method name="onSetWindow" type="void" line="47" virtual="1">
+    </method>
+    <method name="setFramework" type="void" line="48">
+      <param name="framework" type="DefinitionsFramework *"/>
+    </method>
+    <method name="getFramework" type="DefinitionsFramework *" line="49">
+    </method>
+    <method name="setAttribute" type="void" virtual="1" scriptable="1" line="124">
+      <param name="attributeName" type="const char *"/>
+      <param name="attributeValue" type="const char *"/>
+    </method>
+    <method name="getAttribute" type="const char *" scriptable="1" line="135">
+      <param name="attributeName" type="const char *"/>
+    </method>
+    <method name="getAttributeInt" type="int" scriptable="1" line="143">
+      <param name="attributeName" type="const char *"/>
+      <param name="defaultValue" type="int" default="0"/>
+    </method>
+    <method name="getAttributeBool" type="bool" scriptable="1" line="153">
+      <param name="attributeName" type="const char *"/>
+      <param name="defaultValue" type="bool" default="0"/>
+    </method>
+    <method name="hasAttribute" type="bool" scriptable="1" line="163">
+      <param name="attributeName" type="const char *"/>
+    </method>
+    <method name="getNumAttributes" type="int" scriptable="1" line="167">
+    </method>
+    <method name="enumAttributeName" type="const char *" scriptable="1" line="171">
+      <param name="i" type="int"/>
+    </method>
+    <method name="enumAttributeValue" type="const char *" scriptable="1" line="177">
+      <param name="i" type="int"/>
+    </method>
+    <method name="addChild" type="void" scriptable="1" line="359">
+      <param name="child" type="XUIObject *"/>
+      <param name="insertBefore" type="XUIObject *"/>
+    </method>
+    <method name="removeChild" type="void" scriptable="1" line="377">
+      <param name="child" type="XUIObject *"/>
+    </method>
+    <method name="destroyChild" type="void" scriptable="1" line="382">
+      <param name="child" type="XUIObject *"/>
+    </method>
+    <method name="destroyChildren" type="void" scriptable="1" line="395">
+      <param name="deletelist" type="PtrList %3C XUIObject %3E *"/>
+    </method>
+    <method name="createObject" type="XUIObject *" scriptable="1" line="411">
+      <param name="tagname" type="const char *"/>
+    </method>
+    <method name="getChildren" type="PtrList %3C XUIObject %3E %26" line="66" scriptable="1">
+    </method>
+    <method name="getNumChildren" type="int" scriptable="1" line="420">
+    </method>
+    <method name="enumChild" type="XUIObject *" scriptable="1" line="424">
+      <param name="i" type="int"/>
+    </method>
+    <method name="getLastChild" type="XUIObject *" scriptable="1" line="1099">
+    </method>
+    <method name="getFirstChild" type="XUIObject *" scriptable="1" line="1103">
+    </method>
+    <method name="getParent" type="XUIObject *" scriptable="1" line="436">
+    </method>
+    <method name="getTagName" type="const char *" scriptable="1" line="440">
+    </method>
+    <method name="setTagName" type="void" line="444">
+      <param name="tagname" type="const char *"/>
+    </method>
+    <method name="bringToFront" type="void" line="74" scriptable="1">
+    </method>
+    <method name="sendToBack" type="void" line="75" scriptable="1">
+    </method>
+    <method name="focus" type="void" line="76" scriptable="1">
+    </method>
+    <method name="isFocused" type="bool" line="77" scriptable="1">
+    </method>
+    <method name="pointInRect" type="bool" scriptable="1" line="472">
+      <param name="x" type="int"/>
+      <param name="y" type="int"/>
+    </method>
+    <method name="pointInRegion" type="bool" scriptable="1" line="476">
+      <param name="x" type="int"/>
+      <param name="y" type="int"/>
+    </method>
+    <method name="invalidate" type="void" line="80" scriptable="1">
+    </method>
+    <method name="getX" type="int" line="81" scriptable="1">
+    </method>
+    <method name="getY" type="int" line="82" scriptable="1">
+    </method>
+    <method name="getWidth" type="int" line="83" scriptable="1">
+    </method>
+    <method name="getHeight" type="int" line="84" scriptable="1">
+    </method>
+    <method name="beginMouseCapture" type="void" scriptable="1" line="574">
+    </method>
+    <method name="endMouseCapture" type="void" scriptable="1" line="578">
+    </method>
+    <method name="getElementById" type="XUIObject *" scriptable="1" line="649">
+      <param name="id" type="const char *"/>
+      <param name="local" type="bool"/>
+    </method>
+    <method name="getElementByTagName" type="XUIObject *" scriptable="1" line="654">
+      <param name="tag" type="const char *"/>
+      <param name="local" type="bool"/>
+    </method>
+    <method name="getElementByAttribute" type="XUIObject *" scriptable="1" line="659">
+      <param name="attrName" type="const char *"/>
+      <param name="attrValue" type="const char *"/>
+      <param name="local" type="bool"/>
+    </method>
+    <method name="getElementsById" type="PtrList %3C XUIObject %3E *" scriptable="1" line="1013">
+      <param name="id" type="const char *"/>
+      <param name="local" type="bool"/>
+    </method>
+    <method name="getElementsByTagName" type="PtrList %3C XUIObject %3E *" scriptable="1" line="1020">
+      <param name="tag" type="const char *"/>
+      <param name="local" type="bool"/>
+    </method>
+    <method name="getElementsByAttribute" type="PtrList %3C XUIObject %3E *" scriptable="1" line="1027">
+      <param name="attrName" type="const char *"/>
+      <param name="attrValue" type="const char *"/>
+      <param name="local" type="bool"/>
+    </method>
+    <method name="findElement" type="XUIObject *" line="664">
+      <param name="cb" type="FindElementCallback *"/>
+      <param name="local" type="bool" default="false"/>
+    </method>
+    <method name="findElements" type="void" line="676">
+      <param name="cb" type="FindElementCallback *"/>
+      <param name="result" type="PtrList %3C XUIObject %3E *"/>
+      <param name="local" type="bool" default="false"/>
+    </method>
+    <method name="isMouseIn" type="bool" line="95" scriptable="1">
+    </method>
+    <method name="onAttributeChanged" type="void" virtual="1" scriptable="1" isevent="1" line="183">
+      <param name="attributeName" type="const char *"/>
+      <param name="attributeValue" type="const char *"/>
+    </method>
+    <method name="updateCoordinates" type="void" virtual="1" line="354">
+    </method>
+    <method name="isDragging" type="bool" line="100" scriptable="1">
+    </method>
+    <method name="onBeginDrag" type="void" scriptable="1" isevent="1" line="1034">
+      <param name="s" type="XUIDndSession *"/>
+    </method>
+    <method name="onEndDrag" type="void" scriptable="1" isevent="1" line="1041">
+      <param name="s" type="XUIDndSession *"/>
+      <param name="success" type="bool"/>
+    </method>
+    <method name="onDragEnter" type="void" line="103" scriptable="1" isevent="1">
+      <param name="dndSession" type="XUIDndSession *"/>
+    </method>
+    <method name="onDragLeave" type="void" line="104" scriptable="1" isevent="1">
+      <param name="dndSession" type="XUIDndSession *"/>
+    </method>
+    <method name="onDragOver" type="void" line="105" scriptable="1" isevent="1">
+      <param name="dndSession" type="XUIDndSession *"/>
+      <param name="x" type="int"/>
+      <param name="y" type="int"/>
+    </method>
+    <method name="onDragDrop" type="void" line="106" scriptable="1" isevent="1">
+      <param name="dndSession" type="XUIDndSession *"/>
+      <param name="x" type="int"/>
+      <param name="y" type="int"/>
+    </method>
+    <method name="dragEnter" type="void" scriptable="0" isevent="0" hide="0" line="1049">
+      <param name="dragSource" type="RootWnd *"/>
+    </method>
+    <method name="dragLeave" type="void" scriptable="0" isevent="0" hide="0" line="1059">
+      <param name="dragSource" type="RootWnd *"/>
+    </method>
+    <method name="dragOver" type="void" scriptable="0" isevent="0" hide="0" line="1071">
+      <param name="dragSource" type="RootWnd *"/>
+      <param name="x" type="int"/>
+      <param name="y" type="int"/>
+    </method>
+    <method name="dragDrop" type="void" scriptable="0" isevent="0" hide="0" line="1081">
+      <param name="dragSource" type="RootWnd *"/>
+      <param name="x" type="int"/>
+      <param name="y" type="int"/>
+    </method>
+    <method name="dragComplete" type="void" scriptable="0" isevent="0" hide="0" line="113">
+      <param name="int" type=""/>
+    </method>
+    <method name="addDragObject" type="void" scriptable="0" isevent="0" hide="0" line="1095">
+      <param name="type" type="const char *"/>
+      <param name="obj" type="void *"/>
+    </method>
+    <method name="onInit" type="void" virtual="1" scriptable="1" isevent="1" line="325">
+    </method>
+    <method name="onDestroy" type="void" virtual="1" scriptable="1" isevent="1" line="955">
+    </method>
+    <method name="onResize" type="void" virtual="1" scriptable="1" isevent="1" line="348">
+    </method>
+    <method name="onLeftButtonDown" type="void" virtual="1" scriptable="1" isevent="1" line="448">
+      <param name="x" type="int"/>
+      <param name="y" type="int"/>
+    </method>
+    <method name="onLeftButtonUp" type="void" virtual="1" scriptable="1" isevent="1" line="527">
+      <param name="x" type="int"/>
+      <param name="y" type="int"/>
+    </method>
+    <method name="onRightButtonDown" type="void" virtual="1" scriptable="1" isevent="1" line="539">
+      <param name="x" type="int"/>
+      <param name="y" type="int"/>
+    </method>
+    <method name="onRightButtonUp" type="void" virtual="1" scriptable="1" isevent="1" line="543">
+      <param name="x" type="int"/>
+      <param name="y" type="int"/>
+    </method>
+    <method name="onMiddleButtonDown" type="void" virtual="1" scriptable="1" isevent="1" line="547">
+      <param name="x" type="int"/>
+      <param name="y" type="int"/>
+    </method>
+    <method name="onMiddleButtonUp" type="void" virtual="1" scriptable="1" isevent="1" line="551">
+      <param name="x" type="int"/>
+      <param name="y" type="int"/>
+    </method>
+    <method name="onMouseWheelDown" type="void" virtual="1" scriptable="1" isevent="1" line="554">
+      <param name="click" type="int"/>
+      <param name="lines" type="int"/>
+    </method>
+    <method name="onMouseWheelUp" type="void" virtual="1" scriptable="1" isevent="1" line="558">
+      <param name="click" type="int"/>
+      <param name="lines" type="int"/>
+    </method>
+    <method name="onMouseMove" type="void" virtual="1" scriptable="1" isevent="1" line="485">
+      <param name="x" type="int"/>
+      <param name="y" type="int"/>
+    </method>
+    <method name="onMouseEnter" type="void" line="128" virtual="1" scriptable="1" isevent="1">
+    </method>
+    <method name="onMouseLeave" type="void" line="129" virtual="1" scriptable="1" isevent="1">
+    </method>
+    <method name="onGetFocus" type="void" line="130" virtual="1" scriptable="1" isevent="1">
+    </method>
+    <method name="onLoseFocus" type="void" line="131" virtual="1" scriptable="1" isevent="1">
+    </method>
+    <method name="onShow" type="void" line="132" virtual="1" scriptable="1" isevent="1">
+    </method>
+    <method name="onHide" type="void" line="133" virtual="1" scriptable="1" isevent="1">
+    </method>
+    <method name="onActivate" type="void" line="134" virtual="1" scriptable="1" isevent="1">
+    </method>
+    <method name="onDeactivate" type="void" line="135" virtual="1" scriptable="1" isevent="1">
+    </method>
+    <method name="onEnable" type="void" line="136" virtual="1" scriptable="1" isevent="1">
+    </method>
+    <method name="onDisable" type="void" line="137" virtual="1" scriptable="1" isevent="1">
+    </method>
+    <method name="onChar" type="void" line="138" virtual="1" scriptable="1" isevent="1">
+      <param name="c" type="unsigned int"/>
+    </method>
+    <method name="onKeyDown" type="void" line="139" virtual="1" scriptable="1" isevent="1">
+      <param name="keyCode" type="unsigned int"/>
+    </method>
+    <method name="onKeyUp" type="void" line="140" virtual="1" scriptable="1" isevent="1">
+      <param name="keyCode" type="unsigned int"/>
+    </method>
+    <method name="onMinimize" type="void" line="141" virtual="1" scriptable="1" isevent="1">
+    </method>
+    <method name="onRestore" type="void" line="142" virtual="1" scriptable="1" isevent="1">
+    </method>
+    <method name="onMaximize" type="void" line="143" virtual="1" scriptable="1" isevent="1">
+    </method>
+    <method name="onCancelCapture" type="void" line="144" virtual="1" scriptable="1" isevent="1">
+    </method>
+    <method name="getAttributeX" type="int" line="146">
+    </method>
+    <method name="getAttributeY" type="int" line="147">
+    </method>
+    <method name="getAttributeW" type="int" line="148">
+    </method>
+    <method name="getAttributeH" type="int" line="149">
+    </method>
+    <method name="getAttributeMinW" type="int" line="150">
+    </method>
+    <method name="getAttributeMinH" type="int" line="151">
+    </method>
+    <method name="getAttributeMaxW" type="int" line="152">
+    </method>
+    <method name="getAttributeMaxH" type="int" line="153">
+    </method>
+    <method name="customTopLevelInit" type="int" line="156" virtual="1">
+      <param name="parentWindow" type="RootWnd *"/>
+    </method>
+    <method name="setBackgroundImage" type="void" line="582">
+      <param name="image" type="const char *"/>
+    </method>
+    <method name="onPaint" type="void" virtual="1" line="588">
+      <param name="canvas" type="Canvas *"/>
+    </method>
+    <method name="getPreferences" type="int" line="770">
+      <param name="which" type="int"/>
+    </method>
+    <method name="isMouseThrough" type="int" line="780">
+    </method>
+    <method name="isDndThrough" type="int" line="789">
+    </method>
+    <method name="addAttribForwarding" type="void" line="793">
+      <param name="source" type="XUIObject *"/>
+      <param name="sourceattr" type="const char *"/>
+      <param name="mappedattr" type="const char *"/>
+    </method>
+    <method name="invalidateDefaultSizeCache" type="void" line="164">
+    </method>
+    <method name="reflow" type="void" line="798">
+    </method>
+    <method name="getFlex" type="int" line="166">
+    </method>
+    <method name="registerScript" type="void" line="943">
+      <param name="script" type="XUIScript *"/>
+    </method>
+    <method name="getNumScripts" type="int" line="947">
+    </method>
+    <method name="enumScript" type="XUIScript *" line="951">
+      <param name="n" type="int"/>
+    </method>
+    <method name="initChild" type="void" line="319">
+      <param name="xo" type="XUIObject *"/>
+    </method>
+    <method name="isInstantiationElement" type="int" line="174">
+    </method>
+    <method name="setInstantiationElement" type="void" line="175">
+    </method>
+    <method name="registerLocalGroupDefinition" type="void" line="975">
+      <param name="node" type="DOMNode *"/>
+    </method>
+    <method name="getLocalGroupDefinition" type="DOMNode *" line="1003">
+      <param name="id" type="const char *"/>
+    </method>
+    <method name="wantFocus" type="int" line="187" virtual="1">
+    </method>
+    <data  name="m_flex_orientation" type="int" line="199" scope="protected">
+    </data>
+    <method name="getDefaultSize" type="int" scope="protected" line="692">
+      <param name="which" type="int"/>
+    </method>
+    <data  name="m_wnd" type="BaseWnd *" line="202" scope="protected">
+    </data>
+    <data  name="m_mouseInArea" type="int" line="203" scope="protected">
+    </data>
+    <method name="beginCapture" type="void" scope="private" line="562">
+      <param name="captureType" type="int"/>
+    </method>
+    <method name="endCapture" type="void" scope="private" line="568">
+      <param name="captureType" type="int"/>
+    </method>
+    <data  name="m_x" type="int" line="210" scope="private">
+    </data>
+    <data  name="m_y" type="int" line="210" scope="private">
+    </data>
+    <data  name="m_w" type="int" line="210" scope="private">
+    </data>
+    <data  name="m_h" type="int" line="210" scope="private">
+    </data>
+    <data  name="m_maxw" type="int" line="210" scope="private">
+    </data>
+    <data  name="m_maxh" type="int" line="210" scope="private">
+    </data>
+    <data  name="m_minw" type="int" line="210" scope="private">
+    </data>
+    <data  name="m_minh" type="int" line="210" scope="private">
+    </data>
+    <data  name="m_id" type="String" line="212" scope="private">
+    </data>
+    <data  name="m_attributes" type="XUIAttributeList" line="214" scope="private">
+    </data>
+    <data  name="m_children" type="PtrList %3C XUIObject %3E" line="215" scope="private">
+    </data>
+    <data  name="m_parent" type="XUIObject *" line="216" scope="private">
+    </data>
+    <method name="setParent" type="void" scope="private" line="428">
+      <param name="parent" type="XUIObject *"/>
+    </method>
+    <data  name="m_draganchor_x" type="int" line="219" scope="private">
+    </data>
+    <data  name="m_draganchor_y" type="int" line="219" scope="private">
+    </data>
+    <data  name="m_draggingWindow" type="int" line="220" scope="private">
+    </data>
+    <data  name="m_tagname" type="String" line="221" scope="private">
+    </data>
+    <data  name="m_captureTypes" type="int" line="222" scope="private">
+    </data>
+    <data  name="m_image" type="Bitmap *" line="223" scope="private">
+    </data>
+    <data  name="m_framework" type="DefinitionsFramework *" line="224" scope="private">
+    </data>
+    <data  name="m_imagealpha" type="int" line="225" scope="private">
+    </data>
+    <data  name="m_disabledimagealpha" type="int" line="226" scope="private">
+    </data>
+    <data  name="m_blender" type="Blender *" line="227" scope="private">
+    </data>
+    <data  name="m_bgcolor" type="COLORREF" line="228" scope="private">
+    </data>
+    <data  name="m_bgstyle" type="int" line="229" scope="private">
+    </data>
+    <data  name="m_highlightcolor" type="COLORREF" line="230" scope="private">
+    </data>
+    <data  name="m_shadowcolor" type="COLORREF" line="231" scope="private">
+    </data>
+    <data  name="m_outlinecolor" type="COLORREF" line="232" scope="private">
+    </data>
+    <data  name="m_outlinesize[4]" type="int" line="233" scope="private">
+    </data>
+    <data  name="m_wantFocus" type="int" line="234" scope="private">
+    </data>
+    <data  name="m_mousethrough" type="int" line="235" scope="private">
+    </data>
+    <data  name="m_ownerService" type="svc_xuiObject *" line="236" scope="private">
+    </data>
+    <data  name="m_focusrectmargin[4]" type="int" line="237" scope="private">
+    </data>
+    <data  name="m_attrforwarders" type="PtrList %3C XUIAttribForwarder %3E" line="238" scope="private">
+    </data>
+    <data  name="m_defaultsize_invalid[2]" type="int" line="239" scope="private">
+    </data>
+    <data  name="m_defaultsize_cached[2]" type="int" line="240" scope="private">
+    </data>
+    <data  name="m_flex" type="int" line="241" scope="private">
+    </data>
+    <data  name="m_scripts" type="PtrList %3C XUIScript %3E" line="242" scope="private">
+    </data>
+    <data  name="m_isInstantiationElement" type="int" line="243" scope="private">
+    </data>
+    <data  name="m_groupdefsFragments" type="PtrList %3C DOMDocumentFragment %3E" line="247" scope="private">
+    </data>
+    <data  name="m_groupdefs" type="GroupDefById" line="248" scope="private">
+    </data>
+    <data  name="m_debugColor" type="COLORREF" line="249" scope="private">
+    </data>
+    <data  name="m_xuiobjects_returnlist" type="PtrList %3C XUIObject %3E" line="250" scope="private">
+    </data>
+    <data  name="m_dndDragging" type="bool" line="258" scope="private">
+    </data>
+    <data  name="m_dndlbuttondown" type="bool" line="259" scope="private">
+    </data>
+    <data  name="m_trieddnd" type="bool" line="260" scope="private">
+    </data>
+  </class>
+</xhd>

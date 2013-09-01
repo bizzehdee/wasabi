@@ -1,0 +1,3 @@
+<xpp precompfile="precomp.h">
+  <class name="api_filereader" file="api_filereader.xhd" />
+</xpp>
